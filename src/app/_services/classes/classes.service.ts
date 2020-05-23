@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
     providedIn: 'root'
   })
+
 export class ClassesService{
 
     constructor(private http: HttpClient) {
@@ -14,5 +15,10 @@ export class ClassesService{
 
     getClasses():Observable<ClassModel[]>{
         return this.http.get<ClassModel[]>('https://uni-school-system.herokuapp.com/api/classes')
+    }
+
+    public addClasses(model:ClassModel) : Observable<ClassModel>
+    {
+        return this.http.post<ClassModel>('https://uni-school-system.herokuapp.com/api/classes',model);
     }
 }
