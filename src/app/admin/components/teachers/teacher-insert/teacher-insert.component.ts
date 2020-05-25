@@ -4,7 +4,7 @@ import { UserCreationHelper } from 'src/app/_helpers/user-creation-helper.servic
 import { TeachersService } from 'src/app/_services/teachers/teachers.service';
 import { TeacherCreationModel } from 'src/app/_models/teachers/teacher-creation.model';
 import { UserType } from 'src/app/_enums/UserType';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-teacher-insert',
