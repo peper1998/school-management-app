@@ -5,6 +5,7 @@ import { TeachersComponent } from './components/teachers/teachers.component';
 import { ParentStudentCreationModel } from '../_models/parents_students/parent-student.model';
 import { ParentsStudentsComponent } from './components/parents_students/parents-students/parents-students.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { ClassesComponent } from './components/classes/classes.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
           { path: 'teachers', component: TeachersComponent },
           { path: 'courses', component: CoursesComponent },
           { path: 'parentsStudentsInsert', component: ParentsStudentsComponent },
+          { path: 'classes', component: ClassesComponent},
         ]
       }
     ]

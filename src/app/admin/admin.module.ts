@@ -19,11 +19,28 @@ import { CoursesInsertComponent } from './components/courses/courses-insert/cour
 import { CoursesComponent } from './components/courses/courses.component';
 import { TeacherCourseAppointmentComponent } from './components/courses/teacher-course-appointment/teacher-course-appointment.component';
 import { TeacherCourseLinkingsListComponent } from './components/courses/teacher-course-linkings-list/teacher-course-linkings-list.component';
-
-
+import { ClassesComponent } from './components/classes/classes.component';
+import { ClassesListComponent } from './components/classes/classes-list/classes-list.component';
+import { ClassInsertComponent } from './components/classes/class-insert/class-insert.component';
 
 @NgModule({
-  declarations: [AdminSectionComponent, TeachersComponent, TeacherInsertComponent, TeachersListComponent, ParentStudentInsertComponent, ParentsStudentsComponent,CoursesComponent, CoursesListComponent, CoursesInsertComponent, TeacherCourseAppointmentComponent, TeacherCourseLinkingsListComponent],
+  declarations: [
+    AdminSectionComponent,
+    ClassInsertComponent,
+    TeachersComponent,
+    ClassesComponent,
+    ClassesListComponent,
+    TeacherInsertComponent,
+    TeachersListComponent,
+    ParentStudentInsertComponent,
+    ParentsStudentsComponent,
+    CoursesComponent,
+    CoursesListComponent,
+    CoursesInsertComponent,
+    TeacherCourseAppointmentComponent,
+    TeacherCourseLinkingsListComponent
+  ],
+
   imports: [
     CommonModule,
     AdminRoutingModule,

@@ -14,10 +14,10 @@ export class ClassesComponent implements OnInit {
   constructor(private classesService: ClassesService) { }
 
   ngOnInit() {
-    this.classesService.getClasses().subscribe(classes=>{
+    this.classesService.getClasses().subscribe(classes => {
       console.log(classes);
-      this.classesList=classes;
-    })
+      this.classesList = classes;
+    });
   }
 
 }
