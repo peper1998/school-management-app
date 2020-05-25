@@ -5,8 +5,8 @@ import { TeachersComponent } from './components/teachers/teachers.component';
 import { ParentStudentCreationModel } from '../_models/parents_students/parent-student.model';
 import { ParentsStudentsComponent } from './components/parents_students/parents-students/parents-students.component';
 import { CoursesComponent } from './components/courses/courses.component';
-import { SchedulesComponent } from './components/schedules/schedules.component';
 import { ClassesComponent } from './components/classes/classes.component';
+import { SchedulesComponent } from './components/schedules/schedules.component';
 
 
 const routes: Routes = [
