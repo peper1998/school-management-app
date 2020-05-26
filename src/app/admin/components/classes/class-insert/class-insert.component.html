@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <label for="year">Rocznik</label>
-    <input type="text" formControlName="year" class="form-control"
+    <input type="number" formControlName="year" class="form-control"
         [ngClass]="{ 'is-invalid':f.name.errors }" />
     <div *ngIf="f.year.errors" class="invalid-feedback">
         <div *ngIf="f.year.errors.required">Musisz podać rocznik</div>

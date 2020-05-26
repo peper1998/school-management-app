@@ -35,6 +35,7 @@ export class CoursesInsertComponent implements OnInit {
         this.courseAdded.emit();
         this.courseForm.reset();
     });
+    alert("Przedmiot dodano");
   }
 
   constructor(private coursesService:CoursesService,

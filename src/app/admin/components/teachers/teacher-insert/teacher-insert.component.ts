@@ -45,6 +45,7 @@ export class TeacherInsertComponent implements OnInit {
     this.teachersService.addTeacher(this.createModel()).subscribe(teacher=>{
       console.log(teacher);
     });
+    alert("Nauczyciel został dodany");
   }
 
   birthDatePickerChangedHandler(date: any)

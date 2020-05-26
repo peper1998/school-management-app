@@ -32,6 +32,7 @@ export class ClassInsertComponent implements OnInit {
     this.classesService.addClass(this.createModel()).subscribe(schoolClass => {
       console.log(schoolClass);
     });
+    alert("Klasa została dodana");
   }
 
   constructor(private formBuilder: FormBuilder,
