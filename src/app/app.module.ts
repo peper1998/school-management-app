@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './_services/AuthInterceptor';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+
 
 
 
@@ -28,7 +30,8 @@ import { AuthInterceptor } from './_services/AuthInterceptor';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     GridModule,
-    HttpClientModule
+    HttpClientModule,
+    PDFExportModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

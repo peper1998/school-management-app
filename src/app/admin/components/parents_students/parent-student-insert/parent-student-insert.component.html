@@ -87,3 +87,12 @@
     </button>
 
 </form>
+
+<div class="print-only">
+    <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+        <div>Login rodzica: {{parentLogin}}</div>
+        <div>Haslo rodzica: {{parentPassword}}</div>
+        <div>Login ucznia: {{studentLogin}}</div>
+        <div>Haslo ucznia: {{studentPassword}}</div>
+    </kendo-pdf-export>
+</div>

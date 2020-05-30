@@ -24,6 +24,7 @@ import { ClassesListComponent } from './components/classes/classes-list/classes-
 import { ClassInsertComponent } from './components/classes/class-insert/class-insert.component';
 import { SchedulesComponent } from './components/schedules/schedules.component';
 import { LessonsInsertComponent } from './components/schedules/lessons-insert/lessons-insert.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 
 
@@ -56,7 +57,8 @@ import { LessonsInsertComponent } from './components/schedules/lessons-insert/le
     ReactiveFormsModule,
     DateInputsModule,
     DropDownsModule,
-    FormsModule
+    FormsModule,
+    PDFExportModule
   ],
   providers: [DatePipe]
 })

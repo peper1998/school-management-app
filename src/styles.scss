@@ -10,3 +10,11 @@
 .content_container{
     max-width: 1000px;
 }
+
+.print-only {
+    position: absolute;
+    left: -2000px;
+    top: 0;
+    height: 500px;
+    overflow: hidden;
+  }

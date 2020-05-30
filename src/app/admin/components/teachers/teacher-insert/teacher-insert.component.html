@@ -40,3 +40,9 @@
     </button>
 
 </form>
+<div class="print-only">
+    <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+        <div>Login: {{login}}</div>
+        <div>Haslo: {{password}}</div>
+    </kendo-pdf-export>
+</div>
