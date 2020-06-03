@@ -12,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './_services/AuthInterceptor';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
-
+import { LogoutBarComponent } from './shared.module';
+import { SharedModule } from './shared.module/shared.module';
 
 
 
@@ -21,7 +22,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
   declarations: [
     AppComponent,
     MainComponent,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     ReactiveFormsModule,
     GridModule,
     HttpClientModule,
-    PDFExportModule
+    PDFExportModule,
+    SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]

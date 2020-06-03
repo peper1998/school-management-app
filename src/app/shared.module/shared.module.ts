@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import * as shared from './index'
+import * as shared from './index';
+import { LogoutBarComponent } from './components/logout-bar/logout-bar.component'
 
 @NgModule({
   declarations: [
     shared.BarComponent,
     shared.BarHeaderComponent,
-    shared.BarItemComponent
+    shared.BarItemComponent,
+    shared.LogoutBarComponent
   ],
   imports: [
     CommonModule
@@ -15,7 +17,8 @@ import * as shared from './index'
   exports: [
     shared.BarComponent,
     shared.BarHeaderComponent,
-    shared.BarItemComponent
+    shared.BarItemComponent,
+    shared.LogoutBarComponent
   ]
 })
 export class SharedModule { }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -22,37 +22,29 @@ export class AuthenticationService {
         return this.currentUserSubject.value;
     }
 
-    public isUserLoggedIn() {
-        let token : Token = JSON.parse(localStorage.getItem("token"));
-        if(!token)
-            return false;
-
-        let date = new Date();
-        console.log(date);    
-        let expirationDate = Date.parse(token.expirationDate);
-        console.log(expirationDate);
-        return date.getTime() < expirationDate;
-    }
+    public isUserLoggedIn = false;
 
     login(login, password) {
-         
+
         return this.http.post<Token>(`https://uni-school-system.herokuapp.com/api/authenticate`, { login, password })
             .pipe(map(token => {
-                
+
                 localStorage.setItem('token', JSON.stringify(token));
                 this.http.get<User>('https://uni-school-system.herokuapp.com/api/currentUser')
-                .subscribe(user => {
-                    this.userId=user.id;
-                    this.currentUserSubject.next(user);
-                });
-                
+                    .subscribe(user => {
+                        this.userId = user.id;
+                        this.currentUserSubject.next(user);
+                    });
+                this.isUserLoggedIn = true;
                 return token;
             }));
     }
 
     logout() {
         // remove user from local storage and set current user to null
-        localStorage.removeItem('token');
+        //localStorage.removeItem('token');
+        localStorage.clear();
+        this.isUserLoggedIn=false;
         this.currentUserSubject.next(null);
     }
 }
