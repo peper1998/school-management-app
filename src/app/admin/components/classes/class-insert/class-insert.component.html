@@ -22,12 +22,14 @@
 
     <div class="form-group">
         <label for="supervisiorId">Id wychowawcy</label>
-        <input type="number" formControlName="supervisiorId" class="form-control"
-            [ngClass]="{ 'is-invalid': f.supervisiorId.errors }" />
-        <div *ngIf="f.supervisiorId.errors" class="invalid-feedback">
-            <div *ngIf="f.supervisiorId.errors.required">Id wychowawcy jest wymagane</div>
-            <div *ngIf="f.supervisiorId.errors.maxLength">Id wychowawcy jest za długie</div>
-        </div>
+        <kendo-dropdownlist name="supervisiorId" 
+        [data]="teachers"
+        [valueField]="'id'"
+        formControlName="supervisiorId">
+        <ng-template kendoDropDownListItemTemplate let-dataItem>
+            {{ dataItem.firstName }} {{ dataItem.lastName }}
+        </ng-template>
+        </kendo-dropdownlist>
     </div>
 
     <button (click)="addClass()" [disabled]="!classForm.valid" class="btn btn-primary">

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClassesService } from 'src/app/_services/classes/classes.service';
 import { ClassCreationModel } from 'src/app/_models/class/class-creation.model';
 import { EducationStage } from 'src/app/_enums/EducationStageEnum';
+import { TeachersService } from 'src/app/_services/teachers/teachers.service';
 
 @Component({
   selector: 'app-class-insert',
@@ -10,6 +11,7 @@ import { EducationStage } from 'src/app/_enums/EducationStageEnum';
   styleUrls: ['./class-insert.component.scss']
 })
 export class ClassInsertComponent implements OnInit {
+  teachers: import("g:/school-management-app/src/app/_models/teachers/teacher.model").Teacher[];
 
   EducationStage(){
     return EducationStage;
@@ -47,9 +49,13 @@ export class ClassInsertComponent implements OnInit {
   }
 
   constructor(private formBuilder: FormBuilder,
-    private classesService: ClassesService) { }
+    private classesService: ClassesService,
+    private teachersService:TeachersService) { }
 
   ngOnInit() {
+    this.teachersService.getTeachers().subscribe(teachers=>{
+      this.teachers = teachers;
+    })
     this.educationStageDropdownItems = [];
     this.educationStageDropdownItems.push(EducationStage.FIRST_YEAR);
     this.educationStageDropdownItems.push(EducationStage.SECOND_YEAR);
