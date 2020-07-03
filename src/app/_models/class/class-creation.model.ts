@@ -1,5 +1,7 @@
+import { EducationStage } from 'src/app/_enums/EducationStageEnum';
+
 export class ClassCreationModel{
-    year:number;
+    enumEducationStage:EducationStage;
     name:string;
     supervisorId: number;
 }

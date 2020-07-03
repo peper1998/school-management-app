@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClassesService } from 'src/app/_services/classes/classes.service';
 import { ClassCreationModel } from 'src/app/_models/class/class-creation.model';
+import { EducationStage } from 'src/app/_enums/EducationStageEnum';
 
 @Component({
   selector: 'app-class-insert',
@@ -10,10 +11,20 @@ import { ClassCreationModel } from 'src/app/_models/class/class-creation.model';
 })
 export class ClassInsertComponent implements OnInit {
 
+  EducationStage(){
+    return EducationStage;
+  }
+
+  educationStageDropdownItems:any[];
+
+  dropdownValueChanged(event:any)
+  {
+  }
+
   public classForm = this.formBuilder.group({
     name: ['', [Validators.required, Validators.minLength(2)]],
-    supervisiorId: ['', [Validators.required, Validators.maxLength(3)]],
-    year: ['', [Validators.required, Validators.maxLength(1)]],
+    supervisiorId: ['', [Validators.required]],
+    enumEducationStage: ['', [Validators.required]],
   });
 
   get f() {
@@ -22,15 +33,16 @@ export class ClassInsertComponent implements OnInit {
 
   createModel() {
     let schoolClassDTO = new ClassCreationModel();
-    schoolClassDTO.year = this.classForm.controls["year"].value;
+    schoolClassDTO.enumEducationStage = this.classForm.controls["enumEducationStage"].value;
     schoolClassDTO.name = this.classForm.controls["name"].value;
     schoolClassDTO.supervisorId = this.classForm.controls["supervisiorId"].value;
+    console.log(schoolClassDTO);
     return schoolClassDTO;
   }
 
   addClass() {
     this.classesService.addClass(this.createModel()).subscribe(schoolClass => {
-      console.log(schoolClass);
+       console.log(schoolClass);
     });
   }
 
@@ -38,6 +50,11 @@ export class ClassInsertComponent implements OnInit {
     private classesService: ClassesService) { }
 
   ngOnInit() {
+    this.educationStageDropdownItems = [];
+    this.educationStageDropdownItems.push(EducationStage.FIRST_YEAR);
+    this.educationStageDropdownItems.push(EducationStage.SECOND_YEAR);
+    this.educationStageDropdownItems.push(EducationStage.THIRD_YEAR);
+    this.educationStageDropdownItems.push(EducationStage.FOURTH_YEAR);
   }
 
 }
