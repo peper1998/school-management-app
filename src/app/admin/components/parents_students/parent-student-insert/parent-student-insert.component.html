@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="lastName">Nazwisko</label>
+        <label for="lastName">Data urodzenia&nbsp;</label>
         <kendo-datepicker (valueChange)="parentBirthDatePickerChangedHandler($event)">
         </kendo-datepicker>
     </div>
@@ -36,14 +36,15 @@
             Generuj login rodzica
         </button>
     </div>
-
+    <div class="form-group">
+        <label for="class">Klasa&nbsp;</label>
     <kendo-dropdownlist name="classId"
                         [data]="classList"
                         [textField]="'name'"
                         [valueField]="'id'"
                         (valueChange)="dropdownValueChanged($event)">
     </kendo-dropdownlist>
-
+</div>
     <div class="form-group">
         <label for="firstName">Imię</label>
         <input type="text" formControlName="studentFirstName" class="form-control"
@@ -64,7 +65,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="lastName">Nazwisko</label>
+        <label for="lastName">Data urodzenia&nbsp;</label>
         <kendo-datepicker (valueChange)="studentBirthDatePickerChangedHandler($event)">
         </kendo-datepicker>
     </div>
