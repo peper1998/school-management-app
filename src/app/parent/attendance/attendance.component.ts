@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Attendance  } from 'src/app/_models/attendance/attendance.model';
+import { AttendanceService } from 'src/app/_services/attendance/attendance.service';
 
 @Component({
   selector: 'app-attendance',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AttendanceComponent implements OnInit {
 
-  constructor() { }
+  headElements = ['Nr', 'Lekcja', 'Data', 'Obecność'];
+
+  attendanceList: Attendance[];
+
+  constructor(private attendanceService: AttendanceService) { }
 
   ngOnInit() {
+    this.attendanceService.getAttendance().subscribe(attendance=>{
+      this.attendanceList=attendance;
+    })
+  }
+
+  getAttendance(bool: boolean): String{
+    if(bool){
+      return "obecny";
+    } else{
+      return "nieobecny";
+    }
   }
 
 }
