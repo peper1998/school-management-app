@@ -10,3 +10,15 @@
 <kendo-dropdownlist name="courseId" [data]="coursesList" [textField]="'name'" [valueField]="'id'"
     (valueChange)="dropdownValueChanged($event)">
 </kendo-dropdownlist>
+
+<kendo-grid [data]="marksList" [height]="450">
+  <kendo-grid-column field="course" title="Nazwa Przedmiotu">
+  </kendo-grid-column>
+  <kendo-grid-column field="grades.description" title="Opis">
+  </kendo-grid-column>
+  <kendo-grid-column field="grades.lastChange" title="Ostatnia zmiana">
+      <ng-template kendoGridCellTemplate let-dataItem>
+          <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
+      </ng-template>
+  </kendo-grid-column>
+</kendo-grid>
