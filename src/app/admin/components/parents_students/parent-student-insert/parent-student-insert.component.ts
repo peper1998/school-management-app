@@ -59,6 +59,7 @@ export class ParentStudentInsertComponent implements OnInit {
       this.pdfExport.saveAs(ps.parent.login + "_" + ps.student.login + "TempLoginData");
       console.log(ps);
     })
+    alert('Parent and Student added');
   }
 
   createModel() {

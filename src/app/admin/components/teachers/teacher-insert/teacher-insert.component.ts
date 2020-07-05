@@ -53,6 +53,7 @@ export class TeacherInsertComponent implements OnInit {
       this.pdfExport.saveAs(teacher.login + "TempLoginData");
       console.log(teacher);
     });
+    alert('Teacher added');
   }
 
   birthDatePickerChangedHandler(date: any)

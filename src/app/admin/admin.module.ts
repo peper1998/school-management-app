@@ -29,7 +29,6 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 
 
 
-
 @NgModule({
   declarations: [
     AdminSectionComponent,
