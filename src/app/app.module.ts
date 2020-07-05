@@ -14,7 +14,7 @@ import { AuthInterceptor } from './_services/AuthInterceptor';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { LogoutBarComponent } from './shared.module';
 import { SharedModule } from './shared.module/shared.module';
-
+import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 
 
 
@@ -33,7 +33,8 @@ import { SharedModule } from './shared.module/shared.module';
     GridModule,
     HttpClientModule,
     PDFExportModule,
-    SharedModule
+    SharedModule,
+    SchedulerModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
