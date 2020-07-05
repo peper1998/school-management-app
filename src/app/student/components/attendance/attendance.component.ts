@@ -16,19 +16,17 @@ export class AttendanceComponent implements OnInit {
   constructor(private attendanceService: AttendanceService) { }
 
   ngOnInit() {
-    this.attendanceService.getAttendance().subscribe(attendance=>{
-      this.attendanceList=attendance;
-    })
-    
+    this.attendanceService.getAttendance().subscribe(attendance => {
+      this.attendanceList = attendance;
+    });
   }
 
 
-
-  getAttendance(bool: boolean): String{
+  getAttendance(bool: boolean): string {
     if(bool){
-      return "Obecny";
+      return 'Obecny';
     } else{
-      return "Nieobecny";
+      return 'Nieobecny';
     }
   }
 

@@ -4,7 +4,7 @@ import { ParentSectionComponent } from './parent-section/parent-section.componen
 import { AccountComponent } from './account/account.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-import { ConversationComponent } from './conversation/conversation.component';
+import { ConwersationComponent } from './conwersation/conwersation.component';
 import { GradebookComponent } from './gradebook/gradebook.component';
 import { SheduleComponent } from './shedule/shedule.component';
 import { convertActionBinding } from '@angular/compiler/src/compiler_util/expression_converter';
@@ -23,7 +23,7 @@ const routes: Routes = [
           { path: 'attendance', component: AttendanceComponent},
           { path: 'achievements', component: AchievementsComponent},
           { path: 'shedule', component: SheduleComponent},
-          { path: 'conversation', component: ConversationComponent},
+          { path: 'conversation', component: ConwersationComponent},
           { path: 'account', component: AccountComponent}
         ]
       }

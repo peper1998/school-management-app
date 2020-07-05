@@ -1,1 +1,12 @@
-<p>gradebook works!</p>
+<!--
+<app-bar>
+    <app-bar-item>
+        <app-gradebook-list [gridData]="marksList"></app-gradebook-list>
+    </app-bar-item>
+</app-bar>
+-->
+
+<p>Wybierz Przedmiot:</p>
+<kendo-dropdownlist name="courseId" [data]="coursesList" [textField]="'name'" [valueField]="'id'"
+    (valueChange)="dropdownValueChanged($event)">
+</kendo-dropdownlist>

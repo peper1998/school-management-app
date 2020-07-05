@@ -6,7 +6,7 @@ import { ParentSectionComponent } from './parent-section/parent-section.componen
 import { AccountComponent } from './account/account.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-import { ConversationComponent } from './conversation/conversation.component';
+import { ConwersationComponent } from './conwersation/conwersation.component';
 import { GradebookComponent } from './gradebook/gradebook.component';
 import { SheduleComponent } from './shedule/shedule.component';
 
@@ -17,9 +17,9 @@ import { SheduleComponent } from './shedule/shedule.component';
     AccountComponent,
     AchievementsComponent,
     AttendanceComponent,
-    ConversationComponent,
+    ConwersationComponent,
     GradebookComponent,
-    SheduleComponent  
+    SheduleComponent
   ],
   imports: [
     CommonModule,

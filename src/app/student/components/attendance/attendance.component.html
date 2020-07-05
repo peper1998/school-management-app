@@ -1,0 +1,12 @@
+<h3>Lista obecności</h3>
+<kendo-grid [data]="attendanceList" [height]="410">
+  <kendo-grid-column field="courseName" title="Nazwa Przedmiotu">
+  </kendo-grid-column>
+  <kendo-grid-column field="date" title="Data">
+  </kendo-grid-column>
+  <kendo-grid-column field="wasPresent" title="Obecność">
+      <ng-template kendoGridCellTemplate let-dataItem>
+          <input type="checkbox" [checked]="dataItem.Discontinued" disabled/>
+      </ng-template>
+  </kendo-grid-column>
+</kendo-grid>

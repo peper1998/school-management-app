@@ -1,7 +1,9 @@
 import { User } from '../user';
+import { EducationStage } from 'src/app/_enums/EducationStageEnum';
 
 export class ClassModel{
-    id:number;
-    name:string;
+    enumEducationStage: EducationStage;
+    id: number;
+    name: string;
     supervisor: User;
 }

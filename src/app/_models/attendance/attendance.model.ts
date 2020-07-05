@@ -7,5 +7,5 @@ import { LessonNumber } from 'src/app/_enums/LessonNumber';
     date: string;
     dayOfWeek: DayOfWeek;
     lessonNumber: LessonNumber;
-    wasPresent: boolean;
+    wasPresent: Boolean;
  }

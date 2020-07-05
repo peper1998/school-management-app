@@ -3,11 +3,10 @@ import { LessonNumber } from 'src/app/_enums/LessonNumber';
 import { ClassModel } from '../class/class.model';
 import { TeacherCourseLinkingModel } from '../courses/teacher-course-linking.model';
 
- export class Lesson
- {
-     id:number;
-     dayOfWeek:DayOfWeek;
-     lessonNumber: LessonNumber;
+export class Lesson {
+     dayOfWeek: DayOfWeek;
      entityClass: ClassModel;
-     teacherCourse:TeacherCourseLinkingModel;
+     id: number;
+     lessonNumber: LessonNumber;
+     teacherCourse: TeacherCourseLinkingModel;
  }
