@@ -11,9 +11,17 @@ import { TeacherAttendanceComponent } from './components/teacher-attendance/teac
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import { ReactiveFormsModule } from '@angular/forms';
+import { course } from './components/_models/course';
+import { entityClass } from './components/_models/entityClass';
+import { supervisor } from './components/_models/supervisor';
+import { teacher } from './components/_models/teacher';
+import { teacherCourse } from './components/_models/teacherCourse';
+import { teacherLessonsGet } from './components/_models/teacherLessonsGet';
+//import {SchedulerEvent} from '@progress/kendo-angular-scheduler';
 
 @NgModule({
-  declarations: [TeacherSectionComponent, TeacherScheduleComponent, TeacherCompetitionsComponent, TeacherAttendanceComponent],
+  declarations: [TeacherSectionComponent, TeacherScheduleComponent, TeacherCompetitionsComponent, TeacherAttendanceComponent
+  ], //course, entityClass, supervisor, teacher, teacherCourse, teacherLessonsGet
   imports: [
     CommonModule,
     TeacherRoutingModule,

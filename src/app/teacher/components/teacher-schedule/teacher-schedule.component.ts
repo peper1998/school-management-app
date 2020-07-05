@@ -4,6 +4,9 @@ import { SchedulerEvent, SchedulerModule, CreateFormGroupArgs, MonthDaySlotTempl
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
 import { DayOfWeek } from 'src/app/_enums/DayOfWeek';
 import { Day } from '@progress/kendo-date-math/dist/npm/day.enum';
+import { TeacherScheduleServiceService } from '../_services/teacher-schedule-service.service';
+import { teacherLessonsGet } from '../_models/teacherLessonsGet';
+import { User } from 'src/app/_models/user';
 @Component({
   selector: 'app-teacher-schedule',
   // templateUrl: './teacher-schedule.component.html',
@@ -44,19 +47,24 @@ import { Day } from '@progress/kendo-date-math/dist/npm/day.enum';
   styleUrls: ['./teacher-schedule.component.scss']
 })
 export class TeacherScheduleComponent implements OnInit {
- // public selectedDate: Date = displayDate;
-public selectedDate: Date;
-// public events: SchedulerEvent[] = sampleDataWithResources;
+  public selectedDate: Date = displayDate;
+//public selectedDate: Date;
+ public events: SchedulerEvent[] = sampleDataWithResources;
  public formGroup: FormGroup;
-  public events: SchedulerEvent[] =[
-    {
-      id:1,
-      title: "xD",
-      start: new Date('2020-07-07T16:00:00'),
-      end: new Date('2020-07-07T17:00:00')
-    }];
-  constructor(private formBuilder: FormBuilder) { 
+ lessonsGet:teacherLessonsGet[];
+ idTeacher:User;
+// public events: SchedulerEvent[];
+  //  public events: SchedulerEvent[]=[
+  //   {
+  //     id:1,
+  //     title: "xD",
+  //     start: new Date('2020-07-07T16:00:00'),
+  //     end: new Date('2020-07-07T17:00:00')
+  //   }];
+  constructor(private formBuilder: FormBuilder,private teacherServiceGet:TeacherScheduleServiceService) { 
+    //this.events = new SchedulerEvent[];
     this.createFormGroup = this.createFormGroup.bind(this);
+    //this.getCurrentUserId();
   }
   // "TaskID": 119,
   // "OwnerID": 3,
@@ -72,7 +80,47 @@ public selectedDate: Date;
   // "IsAllDay": false
   ngOnInit() {
      this.selectedDate = new Date('2020-07-06T17:03:00');
+     
     
+  }
+  getLessons(id:number)
+  {
+    this.teacherServiceGet.getLessonsTeacher(id).subscribe(
+      (value)=>
+      {
+          this.lessonsGet = value;
+          console.log(this.lessonsGet);
+          //this.populateSchedulerEvents();
+      },
+      (error:any)=>
+      {
+        alert("Nie udalo sie pobrac lekcji nauczyciela");
+      }
+    )
+  }
+  // populateSchedulerEvents()
+  // {
+  //   for(let i =0;i<this.lessonsGet.length;i++)
+  //   {
+  //     this.events[i]
+  //     this.events[i].title = this.lessonsGet[i].entityClass.name + " " + this.lessonsGet[i].teacherCourse.course.name;
+  //     console.log(this.events[i].title);
+  //   }
+  // }
+  getCurrentUserId()
+  {
+    this.teacherServiceGet.getCurrentTeacherId().subscribe(
+      (value)=>
+      {
+        this.idTeacher = value;
+        console.log(this.idTeacher.id);
+        this.getLessons(this.idTeacher.id);
+      },
+      (error)=>
+      {
+        alert("Nie udalo sie pobrac id nauczyciela");
+      }
+    )
   }
   funkcyjka()
   {
