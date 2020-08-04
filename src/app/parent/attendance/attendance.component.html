@@ -1,5 +1,5 @@
 <h3>Lista obecności</h3>
-<table mdbTable>
+<!--<table mdbTable>
     <thead>
       <tr>
         <th *ngFor="let head of headElements" scope="col">{{head}} </th>
@@ -14,3 +14,13 @@
       </tr>
     </tbody>
 </table>
+-->
+
+<kendo-grid [data]="absense" [height]="410">
+  <kendo-grid-column field="date" title="Data">
+  </kendo-grid-column>
+  <kendo-grid-column field="courseName" title="Przedmiot">
+  </kendo-grid-column>
+  <kendo-grid-column field="lessonNumber" title="Numer lekcji">
+  </kendo-grid-column>
+</kendo-grid>
