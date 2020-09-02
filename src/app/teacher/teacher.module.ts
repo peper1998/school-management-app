@@ -9,18 +9,24 @@ import { TeacherAttendanceComponent } from './components/teacher-attendance/teac
 
 //import { BrowserModule } from '@angular/platform-browser';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SchedulerModule } from '@progress/kendo-angular-scheduler';
-import { ReactiveFormsModule } from '@angular/forms';
+import { SchedulerModule, SharedModule } from '@progress/kendo-angular-scheduler';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { course } from './components/_models/course';
 import { entityClass } from './components/_models/entityClass';
 import { supervisor } from './components/_models/supervisor';
 import { teacher } from './components/_models/teacher';
 import { teacherCourse } from './components/_models/teacherCourse';
 import { teacherLessonsGet } from './components/_models/teacherLessonsGet';
+import { Resolver } from './components/teacher-schedule/resolver';
+import { GridModule } from '@progress/kendo-angular-grid';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { TeacherMessagesComponent } from './components/teacher-messages/teacher-messages/teacher-messages.component';
+import { TeacherMarksComponent } from './components/teacher-marks/teacher-marks/teacher-marks.component';
 //import {SchedulerEvent} from '@progress/kendo-angular-scheduler';
 
 @NgModule({
-  declarations: [TeacherSectionComponent, TeacherScheduleComponent, TeacherCompetitionsComponent, TeacherAttendanceComponent
+  declarations: [TeacherSectionComponent, TeacherScheduleComponent, TeacherCompetitionsComponent, TeacherAttendanceComponent, TeacherMessagesComponent, TeacherMarksComponent
   ], //course, entityClass, supervisor, teacher, teacherCourse, teacherLessonsGet
   imports: [
     CommonModule,
@@ -28,7 +34,13 @@ import { teacherLessonsGet } from './components/_models/teacherLessonsGet';
   //  BrowserModule,
    // BrowserAnimationsModule,
     SchedulerModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    SharedModule,
+    GridModule,
+    DateInputsModule,
+    DropDownsModule,
+    FormsModule,
+  ],
+  providers: [Resolver],
 })
 export class TeacherModule { }
