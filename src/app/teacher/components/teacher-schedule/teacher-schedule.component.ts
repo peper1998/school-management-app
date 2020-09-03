@@ -224,15 +224,16 @@ export class TeacherScheduleComponent implements OnInit {
     {
       tab.push({ text: 'Klasa'+i, value: i, color: this.random_hex_color_code() });
     }
+    console.log(tab);
     return tab;
   }
   public resources: any[] = [{
     name: 'Rooms',
-    data: [
-      { text: 'Klasa', value: 0, color: '#188f77' },
-      { text: 'Klasa', value: 2, color: '#13725f' },
-     { text: 'Klasa', value: 1, color: '#c8caac' },
-      this.generateResourceData()],
+    data: 
+    //   { text: 'Klasa', value: 0, color: '#188f77' },
+    //   { text: 'Klasa', value: 2, color: '#13725f' },
+    //  { text: 'Klasa', value: 1, color: '#c8caac' },
+      this.generateResourceData(),
     field: 'roomId',
     valueField: 'value',
     textField: 'text',

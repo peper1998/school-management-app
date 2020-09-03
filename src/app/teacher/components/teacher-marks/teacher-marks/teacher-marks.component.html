@@ -1,1 +1,15 @@
-<p>teacher-marks works!</p>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+    <h3>Wybierz klasę:  </h3>
+    <kendo-dropdownlist name="classId" [data]="classesList" [textField]="'name'" [valueField]="'id'"
+        (valueChange)="dropdownValueChanged($event)">
+    </kendo-dropdownlist>
+</div>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+    <h3>Wybierz przedmiot</h3>
+    <kendo-dropdownlist name="classId" [data]="teacherCoursesList" [textField]="'course.name'" [valueField]="'id'"
+        (valueChange)="teacherCourseDropdownValueChanged($event)">
+        <ng-template kendoDropDownListItemTemplate let-dataItem>
+            <span>{{ dataItem.teacher.firstName }} {{ dataItem.teacher.lastName }} {{ dataItem.course.name }}</span> 
+        </ng-template>
+    </kendo-dropdownlist>
+</div>
