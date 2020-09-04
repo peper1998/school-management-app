@@ -4,6 +4,7 @@ import { UserType } from 'src/app/_enums/UserType';
 export class teachersCoursesGet {
     
        course:course;
+       displayName:String;
           id: Number;
           teacher: {
             birthDate: String;
