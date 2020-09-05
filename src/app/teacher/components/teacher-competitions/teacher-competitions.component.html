@@ -1,1 +1,21 @@
-<p>teacher-competitions works!</p>
+<kendo-grid *ngIf="competitionGetDTO" [kendoGridBinding]="competitionGetDTO" [pageSize]="20" [pageable]="true" [sortable]="false" (edit)="selectCompetition($event)" 
+    [resizable]="true" [height]="480"(save)="saveHandlerCompetition($event)" (remove)="removeHandlerCompetition($event)" (edit)="editHandlerCompetition($event)" (cancel)="cancelHandlerCompetition($event)" (add)="addHandlerCompetition($event)" > <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"-->
+    <ng-template kendoGridToolbarTemplate [position]="'top'">
+        <button kendoGridAddCommand>Dodaj nowy konkurs</button>
+    </ng-template>
+    <kendo-grid-column field="name" title="Nazwa" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="description" title="Opis" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="amountOfStudentsAssigned" title="Liczba przypisanych" width="100">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edytuj</button>
+            <button kendoGridRemoveCommand>Usuń</button>
+            <button kendoGridSaveCommand [disabled]="formGroupCompetition?.invalid">{{ isNew ? 'Dodaj' : 'Aktualizuj' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Odrzuć zmiany' : 'Anuluj' }}</button>
+            <button  *ngIf="!this.currentlyEditing" type="button" class="btn btn-outline-info btn-sm">Szczegóły</button>
+        </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>
