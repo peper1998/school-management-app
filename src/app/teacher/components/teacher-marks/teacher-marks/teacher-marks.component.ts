@@ -103,12 +103,20 @@ export class TeacherMarksComponent implements OnInit {
   }
   mapGradesToString() {
     let i = 0;
+    var firstIteration = true;
     this.studentsMarkGet.forEach(m => {
       let gradeIndex = 0;
       m.grades.forEach(() => {
-        this.studentsList[i].grades += this.mapGradeToStr[this.studentsMarkGet[i].grades[gradeIndex].enumGrade] + ', ';
+        if(firstIteration) {
+          firstIteration = false;
+          this.studentsList[i].grades = this.mapGradeToStr[this.studentsMarkGet[i].grades[gradeIndex].enumGrade] + ', ';
+        }
+        else {
+          this.studentsList[i].grades += this.mapGradeToStr[this.studentsMarkGet[i].grades[gradeIndex].enumGrade] + ', ';
+        }
         gradeIndex++;
       })
+      firstIteration=true;
       i++;
     })
 
