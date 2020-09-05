@@ -22,6 +22,7 @@ export class ClassInsertComponent implements OnInit {
 
   dropdownValueChanged(event:any)
   {
+    console.log(this.classForm.get("enumEducationStage").value);
   }
 
   public classForm = this.formBuilder.group({
@@ -56,6 +57,7 @@ export class ClassInsertComponent implements OnInit {
   ngOnInit() {
     this.teachersService.getTeachers().subscribe(teachers=>{
       this.teachers = teachers;
+      this.teachers.forEach(e=>e.firstName=e.firstName+" " + e.lastName)
     })
     this.educationStageDropdownItems = [];
     this.educationStageDropdownItems.push(EducationStage.FIRST_YEAR);
@@ -63,6 +65,11 @@ export class ClassInsertComponent implements OnInit {
     this.educationStageDropdownItems.push(EducationStage.THIRD_YEAR);
     this.educationStageDropdownItems.push(EducationStage.FOURTH_YEAR);
   }
-
+  teacherChanged() {
+    console.log(this.classForm.get("supervisiorId").value)
+  }
+  textDisplay(id) {
+    console.log(id);
+  }
 }
 

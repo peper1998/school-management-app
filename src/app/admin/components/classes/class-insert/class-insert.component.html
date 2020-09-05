@@ -24,11 +24,10 @@
         <label for="supervisiorId">Id wychowawcy</label>
         <kendo-dropdownlist name="supervisiorId" 
         [data]="teachers"
-        [valueField]="'id'"
+        valueField="id"
+        textField="firstName"
+        [valuePrimitive]="true"
         formControlName="supervisiorId">
-        <ng-template kendoDropDownListItemTemplate let-dataItem>
-            {{ dataItem.firstName }} {{ dataItem.lastName }}
-        </ng-template>
         </kendo-dropdownlist>
     </div>
 

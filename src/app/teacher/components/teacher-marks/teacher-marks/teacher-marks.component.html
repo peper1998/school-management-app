@@ -1,0 +1,50 @@
+<div style="display:flex; flex-direction: row; width: fit-content;">
+    <h3>Wybierz klasę:  </h3>
+    <kendo-dropdownlist name="classId" [data]="classesList" [textField]="'name'" [valueField]="'id'"
+        (valueChange)="dropdownValueChanged($event)">
+    </kendo-dropdownlist>
+</div>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+    <h3>Wybierz przedmiot</h3>
+    <kendo-dropdownlist name="classId" [data]="teacherCoursesList" [textField]="'displayName'" [valueField]="'id'"
+        (valueChange)="teacherCourseDropdownValueChanged($event)">
+    </kendo-dropdownlist>
+</div>
+<kendo-grid *ngIf="studentsList" [kendoGridBinding]="studentsList" [pageSize]="20" [pageable]="true" [sortable]="false" (edit)="selectStudent($event)"
+    [resizable]="true" [height]="480" > <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"-->
+    <kendo-grid-column field="firstName" title="Imię" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="lastName" title="Nazwisko" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="grades" title="Oceny" width="100">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Szczegóły</button>
+            <!-- <button kendoGridRemoveCommand>Remove</button>
+            <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button> -->
+        </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>
+<kendo-grid *ngIf="this.selectedStudentObject" [kendoGridBinding]="selectedStudentObject.grades" [pageSize]="20" [pageable]="true" [sortable]="true"  (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"
+    [resizable]="true" [height]="300" (save)="saveHandler($event)" (remove)="removeHandler($event)"> <!-- -->
+    <ng-template kendoGridToolbarTemplate [position]="'top'">
+        <button kendoGridAddCommand>Dodaj</button>
+    </ng-template>
+    <kendo-grid-column field="description" title="Typ" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="grade" title="Ocena" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="lastChange" title="Data" width="100">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <button kendoGridEditCommand [primary]="true">Edytuj</button>
+            <button kendoGridRemoveCommand>Usuń</button>
+
+            <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
+        </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>

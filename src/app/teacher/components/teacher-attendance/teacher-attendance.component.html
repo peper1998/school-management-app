@@ -1,1 +1,16 @@
-<p>teacher-attendance works!</p>
+<kendo-grid  [kendoGridBinding]="lessonAttendanceDTO?.students" [pageSize]="20" [pageable]="true" [sortable]="true"
+    [resizable]="true" [height]="480">
+    <ng-template kendoGridToolbarTemplate [position]="'top'">
+        <button kendoGridAddCommand style="float: right;" (click)="allPresent()">Zaznacz/Odznacz</button>
+        <button kendoGridEditCommand style="float: right;" (click)="submit()">Zatwierdź</button>
+    </ng-template>
+    <kendo-grid-column field="studentFirstName" title="Imię" width="100">
+    </kendo-grid-column>
+    <kendo-grid-column field="studentLastName" title="Nazwisko" width="200">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="Obecność" width="100">
+        <ng-template kendoGridCellTemplate let-dataItem let-isNew="isNew">
+            <button class="primary" (click)="saveChanges(dataItem);" [ngClass]="dataItem.isPresent ? 'present': 'notPresent'">{{ dataItem.isPresent ? 'Obecny' : 'Nieobecny' }}</button>
+        </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>
