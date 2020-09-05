@@ -27,7 +27,7 @@
         </ng-template>
     </kendo-grid-command-column>
 </kendo-grid>
-<kendo-grid *ngIf="this.selectedStudentObject" [kendoGridBinding]="selectedStudentObject.grades" [pageSize]="20" [pageable]="true" [sortable]="true"  (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"
+<kendo-grid *ngIf="this.selectedStudentObject" [kendoGridBinding]="selectedStudentObject?.grades" [pageSize]="20" [pageable]="true" [sortable]="true"  (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"
     [resizable]="true" [height]="300" (save)="saveHandler($event)" (remove)="removeHandler($event)"> <!-- -->
     <ng-template kendoGridToolbarTemplate [position]="'top'">
         <button kendoGridAddCommand>Dodaj</button>
