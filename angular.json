@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "school-management-app"
+  "defaultProject": "school-management-app",
+  "cli": {
+    "analytics": false
+  }
 }
