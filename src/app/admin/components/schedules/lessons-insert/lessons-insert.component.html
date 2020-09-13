@@ -1,15 +1,54 @@
 <div style="display:flex; flex-direction: row; width: fit-content;">
-    <h3>Wybierz klasę:  </h3>
-    <kendo-dropdownlist name="classId" [data]="classesList" [textField]="'name'" [valueField]="'id'"
-        (valueChange)="dropdownValueChanged($event)">
-    </kendo-dropdownlist>
+  <h3>Wybierz klasę: </h3>
+  <kendo-dropdownlist name="classId" [data]="classesList" [textField]="'name'" [valueField]="'id'"
+    (valueChange)="dropdownValueChanged($event)">
+  </kendo-dropdownlist>
 </div>
 <div style="display:flex; flex-direction: row; width: fit-content;">
-    <h3>Wybierz przedmiot i nauczyciela:  </h3>
-    <kendo-dropdownlist name="classId" [data]="teacherCoursesList" [textField]="'course.name'" [valueField]="'id'"
-        (valueChange)="teacherCourseDropdownValueChanged($event)">
-        <ng-template kendoDropDownListItemTemplate let-dataItem>
-            <span>{{ dataItem.teacher.firstName }} {{ dataItem.teacher.lastName }} {{ dataItem.course.name }}</span> 
-        </ng-template>
-    </kendo-dropdownlist>
+  <h3>Wybierz przedmiot i nauczyciela: </h3>
+  <kendo-dropdownlist class="teacher-course-dropdown" name="classId" [data]="teacherCoursesList"
+    [textField]="'course.name'" [valueField]="'id'" (valueChange)="teacherCourseDropdownValueChanged($event)">
+    <ng-template kendoDropDownListValueTemplate let-dataItem>
+      <span *ngIf="dataItem">{{ dataItem.teacher.firstName }} {{ dataItem.teacher.lastName }}
+        {{ dataItem.course.name }}</span>
+    </ng-template>
+    <ng-template kendoDropDownListItemTemplate let-dataItem>
+      <span>{{ dataItem.teacher.firstName }} {{ dataItem.teacher.lastName }} {{ dataItem.course.name }}</span>
+    </ng-template>
+  </kendo-dropdownlist>
 </div>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+  <h3>Wybierz numer lekcji: </h3>
+  <kendo-dropdownlist [data]="lessonNumbers" (valueChange)="lessonNumberValueChanged($event)">
+  </kendo-dropdownlist>
+</div>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+  <h3>Wybierz dzień tygodnia: </h3>
+  <kendo-dropdownlist [data]="weekDays" [textField]="'text'" [valueField]="'value'"
+    (valueChange)="weekDayValueChanged($event)">
+  </kendo-dropdownlist>
+</div>
+<div style="display:flex; flex-direction: row; width: fit-content;">
+  <button (click)="addLesson()" [disabled]="invalid()" class="btn btn-primary">
+    Dodaj lekcję
+  </button>
+</div>
+<kendo-grid *ngIf="classLessonsInDay" [kendoGridBinding]="classLessonsInDay" kendoGridSelectBy="id" [pageSize]="20"
+  [pageable]="true" [sortable]="true" [resizable]="true" [height]="480" (remove)="removeHandler($event)">
+  <kendo-grid-column title="Numer lekcji" width="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{getLessonNumber(dataItem.lessonNumber)}}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field='"teacherCourse" "supervisor.lastName"' title="Przedmiot i nauczyciel" width="100">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      {{ dataItem.teacherCourse.teacher.firstName }} {{ dataItem.teacherCourse.teacher.lastName }}
+      {{ dataItem.teacherCourse.course.name }}
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-command-column title="command" width="220">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+      <button kendoGridRemoveCommand>Remove</button>
+    </ng-template>
+  </kendo-grid-command-column>
+</kendo-grid>
