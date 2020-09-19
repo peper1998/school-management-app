@@ -1,8 +1,14 @@
-<kendo-dropdownlist *ngIf="courseDropdownItems != null" [data]="courseDropdownItems" (valueChange)="onDropdownValueChanged($event)" valuePrimitive="true">
+<kendo-dropdownlist *ngIf="courseDropdownItems != null" [data]="courseDropdownItems"
+  (valueChange)="onDropdownValueChanged($event)" valuePrimitive="true">
 </kendo-dropdownlist>
 
 <kendo-grid *ngIf="displayedMarks" [kendoGridBinding]="(this.displayedMarks | async)">
-  <kendo-grid-column field="description" title="Opis" width="100"></kendo-grid-column>
-  <kendo-grid-column field="enumGrade" title="Ocena" width="100"></kendo-grid-column>
+  <kendo-grid-column field="description" title="Opis" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="enumGrade" title="Ocena" width="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        {{translateGrade(dataItem.enumGrade)}}
+      </ng-template>
+  </kendo-grid-column>
   <kendo-grid-column field="lastChange" title="Data" width="100"></kendo-grid-column>
 </kendo-grid>

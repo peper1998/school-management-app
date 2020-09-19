@@ -33,4 +33,34 @@ export class GradebookComponent implements OnInit {
     this.displayedMarks = of(courseMarks.grades);
   }
 
+  translateGrade(grade:string)
+  {
+    switch (grade) {
+      case 'NONE': {
+        return 'brak';
+      }
+      case 'ONE': {
+        return '1';
+      }
+      case 'TWO': {
+        return '2';
+      }
+      case 'THREE': {
+        return '3';
+      }
+      case 'FOUR': {
+        return '4';
+      }
+      case 'FIVE': {
+        return '5';
+      }
+      case 'SIX ': {
+        return '6';
+      }
+      default:{
+        return 'err'
+      }
+    }
+  }
+
 }
