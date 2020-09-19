@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './_guards/AuthGuard';
-import { UserType } from './_enums/UserType';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+
+import { UserType } from "./_enums/UserType";
+import { AuthGuard } from "./_guards/AuthGuard";
+import { LoginComponent } from "./components/login/login.component";
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: 'parent',
-    loadChildren: () => import('./parent/parent.module').then(m => m.ParentModule),
+    loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
     canActivate: [AuthGuard],
     data: { roles: [UserType.PARENT]}
   },
