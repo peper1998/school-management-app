@@ -1,5 +1,5 @@
 import { WeekDay } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { ChangeDetectorRef, Component, Input } from "@angular/core";
 import { ClassModel } from "src/app/_models/class/class.model";
 import { TeacherCourseLinkingModel } from "src/app/_models/courses/teacher-course-linking.model";
 import { Lesson } from "src/app/_models/lessons/lesson.model";
@@ -51,7 +51,7 @@ export class LessonsInsertComponent {
   }
 
   weekDayValueChanged(day: any) {
-    let weekDay = this.getDayOfWeekEnumText(day.value);
+    const weekDay = this.getDayOfWeekEnumText(day.value);
     this.currentDayOfWeek = weekDay;
     if (this.classLessons) {
       this.classLessonsInDay = this.classLessons.filter(lesson => lesson.dayOfWeek.toString() === weekDay);
@@ -64,18 +64,20 @@ export class LessonsInsertComponent {
         this.classLessons = null;
         this.classLessons = response;
         this.classLessonsInDay = this.classLessons.filter(lesson => lesson.dayOfWeek.toString() === this.currentDayOfWeek);
+        this.cdr.detectChanges();
       })
-    }), err => {
+    }), error => {
       this.lessonsService.getClassLessons(this.currentClassId).subscribe(response => {
         this.classLessons = null;
         this.classLessons = response;
         this.classLessonsInDay = this.classLessons.filter(lesson => lesson.dayOfWeek.toString() === this.currentDayOfWeek);
+        this.cdr.detectChanges();
       })
     };
   }
 
   addLesson() {
-    let postModel = new LessonPostDTO();
+    const postModel = new LessonPostDTO();
     postModel.dayOfWeek = this.currentDayOfWeek;
     postModel.entityClassId = this.currentClassId;
     postModel.lessonNumber = this.currentLessonNumber;
@@ -99,69 +101,69 @@ export class LessonsInsertComponent {
   private getLessonNumberText(lessonNumber: number): string {
     switch (lessonNumber) {
       case 1: {
-        return "FIRST";
+        return 'FIRST';
       }
       case 2: {
-        return "SECOND";
+        return 'SECOND';
       }
       case 3: {
-        return "THIRD";
+        return 'THIRD';
       }
       case 4: {
-        return "FOURTH";
+        return 'FOURTH';
       }
       case 5: {
-        return "FIFTH";
+        return 'FIFTH';
       }
       case 6: {
-        return "SIXTH";
+        return 'SIXTH';
       }
       case 7: {
-        return "SEVENTH";
+        return 'SEVENTH';
       }
       case 8: {
-        return "EIGHTH";
+        return 'EIGHTH';
       }
       case 9: {
-        return "NINTH";
+        return 'NINTH';
       }
       default: {
-        return "ERROR";
+        return 'ERROR';
       }
     }
   }
 
   private getLessonNumber(lesson:string){
     switch (lesson) {
-      case "FIRST": {
+      case 'FIRST': {
         return 1;
       }
-      case "SECOND": {
+      case 'SECOND': {
         return 2;
       }
-      case "THIRD": {
+      case 'THIRD': {
         return 3;
       }
-      case "FOURTH": {
+      case 'FOURTH': {
         return 4;
       }
-      case "FIFTH": {
+      case 'FIFTH': {
         return 5;
       }
-      case "SIXTH": {
+      case 'SIXTH': {
         return 6;
       }
-      case "SEVENTH": {
+      case 'SEVENTH': {
         return 7;
       }
-      case "EIGHTH": {
+      case 'EIGHTH': {
         return 8;
       }
-      case "NINTH": {
+      case 'NINTH': {
         return 9;
       }
       default: {
-        return "ERROR";
+        return 'ERROR';
       }
     }
   }
@@ -169,27 +171,28 @@ export class LessonsInsertComponent {
   private getDayOfWeekEnumText(day: number): string {
     switch (day) {
       case 1: {
-        return "MONDAY";
+        return 'MONDAY';
       }
       case 2: {
-        return "TUESDAY";
+        return 'TUESDAY';
       }
       case 3: {
-        return "WEDNESDAY";
+        return 'WEDNESDAY';
       }
       case 4: {
-        return "THURSDAY";
+        return 'THURSDAY';
       }
       case 1: {
-        return "FRIDAY";
+        return 'FRIDAY';
       }
       default: {
-        return "empty"
+        return 'empty'
       }
     }
   }
 
-  constructor(private lessonsService: LessonsService) { }
+  constructor(private lessonsService: LessonsService,
+              private cdr:ChangeDetectorRef) { }
 
 
 }
