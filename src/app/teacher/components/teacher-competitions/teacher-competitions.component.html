@@ -1,5 +1,8 @@
-<kendo-grid *ngIf="competitionGetDTO" [kendoGridBinding]="competitionGetDTO" [pageSize]="20" [pageable]="true" [sortable]="false" (edit)="selectCompetition($event)" 
-    [resizable]="true" [height]="480"(save)="saveHandlerCompetition($event)" (remove)="removeHandlerCompetition($event)" (edit)="editHandlerCompetition($event)" (cancel)="cancelHandlerCompetition($event)" (add)="addHandlerCompetition($event)" > <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)"-->
+<kendo-grid *ngIf="competitionGetDTO" [kendoGridBinding]="competitionGetDTO" [pageSize]="20" [pageable]="true" [sortable]="false"  
+    [resizable]="true" [height]="480"(save)="saveHandlerCompetition($event)" (remove)="removeHandlerCompetition($event)" (edit)="editHandlerCompetition($event)" (cancel)="cancelHandlerCompetition($event)" (add)="addHandlerCompetition($event)"
+    [selectable]="{ checkboxOnly: false, mode: 'single' }" (selectionChange)="selectCompetition($event)"
+> <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)" (edit)="selectCompetition($event)"-->
+    <kendo-grid-checkbox-column width="25"></kendo-grid-checkbox-column>
     <ng-template kendoGridToolbarTemplate [position]="'top'">
         <button kendoGridAddCommand>Dodaj nowy konkurs</button>
     </ng-template>
@@ -15,7 +18,49 @@
             <button kendoGridRemoveCommand>Usuń</button>
             <button kendoGridSaveCommand [disabled]="formGroupCompetition?.invalid">{{ isNew ? 'Dodaj' : 'Aktualizuj' }}</button>
             <button kendoGridCancelCommand>{{ isNew ? 'Odrzuć zmiany' : 'Anuluj' }}</button>
-            <button  *ngIf="!this.currentlyEditing" type="button" class="btn btn-outline-info btn-sm">Szczegóły</button>
+        </ng-template>
+    </kendo-grid-command-column>
+</kendo-grid>
+
+<kendo-grid *ngIf="selectedCompetition" [kendoGridBinding]="studentsAssignedToCompetition" [pageSize]="20" [pageable]="true" [sortable]="false"
+    [resizable]="true" [height]="480"(save)="saveHandler($event)" (remove)="removeHandler($event)"  (cancel)="cancelHandler($event)" (add)="addHandler($event)"
+> <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)" (edit)="editHandlerCompetition($event)" -->
+    <ng-template kendoGridToolbarTemplate [position]="'top'">
+        <button kendoGridAddCommand>Przypisz studenta</button>
+    </ng-template>
+    <kendo-grid-column field="displayName" title="Imię i nazwisko" width="150">
+        <!-- <ng-template kendoGridCellTemplate let-dataItem>
+          {{ dataItem.displayName}}
+        </ng-template> -->
+        <ng-template kendoGridEditTemplate
+          let-dataItem="dataItem"
+          let-column="column"
+          [formGroup]="formGroupAssignment">
+          <kendo-dropdownlist
+          [formControlName]="'id'"
+            [defaultItem]="{id: 3, displayName: 'Bartosz Talik'}"
+            [data]="srudentsList"
+            textField="displayName"
+            valueField="id"
+            [valuePrimitive]="true"
+          >
+          </kendo-dropdownlist>
+          </ng-template>
+          </kendo-grid-column>
+    <kendo-grid-column field="descriptionParticipation" title="Opis udziału" width="100">
+        <ng-template kendoGridEditTemplate
+        let-dataItem="dataItem"
+        let-column="columnn"
+        [formGroup]="formGroupAssignment">
+        <input type="text" [formControlName]="'description'" placeholder="Opis udziału studenta" >
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
+        <ng-template kendoGridCellTemplate let-isNew="isNew">
+            <!-- <button kendoGridEditCommand [primary]="true">Edytuj</button> -->
+            <button kendoGridRemoveCommand>Usuń</button>
+            <button kendoGridSaveCommand [disabled]="formGroupAssignment?.invalid">{{ isNew ? 'Dodaj' : 'Aktualizuj' }}</button>
+            <button kendoGridCancelCommand>{{ isNew ? 'Odrzuć zmiany' : 'Anuluj' }}</button>
         </ng-template>
     </kendo-grid-command-column>
 </kendo-grid>

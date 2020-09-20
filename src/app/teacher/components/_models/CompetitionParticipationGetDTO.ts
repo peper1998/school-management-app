@@ -8,5 +8,6 @@ export class CompetitionParticipationGetDTO {
         studentFirstName: string;
         studentId: number;
         studentLastName: string;
+        displayName:string;
       
 }

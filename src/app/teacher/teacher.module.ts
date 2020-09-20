@@ -9,7 +9,7 @@ import { TeacherAttendanceComponent } from './components/teacher-attendance/teac
 
 //import { BrowserModule } from '@angular/platform-browser';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SchedulerModule, SharedModule } from '@progress/kendo-angular-scheduler';
+import { SchedulerModule } from '@progress/kendo-angular-scheduler';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { course } from './components/_models/course';
 import { entityClass } from './components/_models/entityClass';
@@ -23,6 +23,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { TeacherMessagesComponent } from './components/teacher-messages/teacher-messages/teacher-messages.component';
 import { TeacherMarksComponent } from './components/teacher-marks/teacher-marks/teacher-marks.component';
+import { SharedModule } from '../shared.module/shared.module';
 //import {SchedulerEvent} from '@progress/kendo-angular-scheduler';
 
 @NgModule({

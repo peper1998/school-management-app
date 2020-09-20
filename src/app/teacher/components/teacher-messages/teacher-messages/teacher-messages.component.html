@@ -1,1 +1,72 @@
-<p>teacher-messages works!</p>
+<app-bar>
+    <app-bar-header>Uczniowie</app-bar-header>
+    <app-bar-item>
+        <kendo-grid *ngIf="studentsGet" [kendoGridBinding]="studentsGet" [pageSize]="20" [pageable]="true" [sortable]="false"  
+        [resizable]="true" [height]="480"
+        [selectable]="{ checkboxOnly: false, mode: 'single' }" (selectionChange)="selectCompetition($event)"> <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)" (edit)="selectCompetition($event)"-->
+        <kendo-grid-checkbox-column width="25"></kendo-grid-checkbox-column>
+        <kendo-grid-column field="firstName" title="Imię" width="100">
+        </kendo-grid-column>
+        <kendo-grid-column field="lastName" title="Nazwisko" width="100">
+        </kendo-grid-column>
+        <kendo-grid-column field="amountOfMessages" title="ilość wymienionych wiadomości" width="150">
+        </kendo-grid-column>
+    </kendo-grid> 
+    <div class="massege-wrapper" *ngIf='selected'>
+        <div class="massege-container">
+            <div class="opposite-user" *ngIf="userToSend !== null && userToSend?.firstName">
+                Rozmawiasz z {{userToSend?.firstName}} {{userToSend?.lastName}}
+            </div>
+    
+            <ul #messageThread class="message-thread" *ngIf="selectedConverstions?.length !== 0">
+                <li *ngFor="let message of selectedConverstions" [class.align-right]="alignMessage(message.owner.id)">
+                    {{ message.answerText}}
+                </li>
+            </ul>
+        </div>
+    
+        <div class="message-typer">
+            <form [formGroup]="messageForm" novalidate>
+                <textarea class="message form-control" placeholder="Type and hit Enter" (keyup)="sendMessage($event)" formControlName="message">
+                </textarea>
+            </form>
+        </div>
+    </div>      
+    </app-bar-item>
+
+    <app-bar-header>Rodzice</app-bar-header>
+    <app-bar-item>
+        <kendo-grid *ngIf="parentsGet" [kendoGridBinding]="parentsGet" [pageSize]="20" [pageable]="true" [sortable]="false"  
+        [resizable]="true" [height]="480"
+        [selectable]="{ checkboxOnly: false, mode: 'single' }" (selectionChange)="selectCompetition($event)"
+    > <!--(save)="saveHandler($event)" (remove)="removeHandler($event)" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (add)="addHandler($event)" (edit)="selectCompetition($event)"-->
+        <kendo-grid-checkbox-column width="25"></kendo-grid-checkbox-column>
+        <kendo-grid-column field="firstName" title="Imię" width="100">
+        </kendo-grid-column>
+        <kendo-grid-column field="lastName" title="Nazwisko" width="100">
+        </kendo-grid-column>
+        <kendo-grid-column field="amountOfMessages" title="ilość wymienionych wiadomości" width="150">
+        </kendo-grid-column>
+    </kendo-grid>
+    <div class="massege-wrapper" *ngIf='selected'>
+        <div class="massege-container">
+            <div class="opposite-user" *ngIf="userToSend !== null && userToSend?.firstName">
+                Rozmawiasz z {{userToSend?.firstName}} {{userToSend?.lastName}}
+            </div>
+    
+            <ul #messageThread class="message-thread" *ngIf="selectedConverstions?.length !== 0">
+                <li *ngFor="let message of selectedConverstions" [class.align-right]="alignMessage(message.owner.id)">
+                    {{ message.answerText}}
+                </li>
+            </ul>
+        </div>
+    
+        <div class="message-typer">
+            <form [formGroup]="messageForm" novalidate>
+                <textarea class="message form-control" placeholder="Type and hit Enter" (keyup)="sendMessage($event)" formControlName="message">
+                </textarea>
+            </form>
+        </div>
+    </div>      
+    </app-bar-item>
+</app-bar>
