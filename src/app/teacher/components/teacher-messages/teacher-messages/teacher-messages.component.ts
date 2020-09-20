@@ -107,7 +107,7 @@ export class TeacherMessagesComponent implements OnInit {
   sendMessage(event) {
     this.newMessageNeedToBeSent = true;
     this.messagesGet.forEach(e=> {
-      if((e.userFirst.id == this.selectedUser.userId && e.userSecond.id == this.userToSend.userId) ||(e.userSecond == this.selectedUser.userId && e.userFirst.id == this.userToSend.userId) )
+      if((e.userFirst.id == this.selectedUser.userId && e.userSecond.id == this.userToSend.userId) ||(e.userSecond.id == this.selectedUser.userId && e.userFirst.id == this.userToSend.userId) )
       {
         this.newMessageNeedToBeSent = false;
       }

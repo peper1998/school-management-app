@@ -4,6 +4,7 @@ import { StudentGet } from 'src/app/_models/students/student-get';
 import { ParentGet } from 'src/app/_models/parents/parent-get';
 import { MessagesGet } from 'src/app/_models/messages/messages-get';
 import { ConversationGet } from 'src/app/_models/messages/conversation-get';
+import { TeacherGet } from 'src/app/_models/teachers/teacher-get';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class TeacherMessagesService {
   }
   getParents() {
     return this.http.get<ParentGet[]>('https://uni-school-system.herokuapp.com/api/parents');
+  }
+  getTeachers() {
+    return this.http.get<TeacherGet[]>('https://uni-school-system.herokuapp.com/api/teachers');
   }
   getCurrentUser() {
     return this.http.get<ParentGet[]>('https://uni-school-system.herokuapp.com/api/currentUser');

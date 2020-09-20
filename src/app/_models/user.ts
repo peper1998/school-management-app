@@ -7,4 +7,6 @@ export class User {
     login: string;
     birthDate: Date;
     userType: UserType;
+    userId: number;
+    classId: number;
 }
