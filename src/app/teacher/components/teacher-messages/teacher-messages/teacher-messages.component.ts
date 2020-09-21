@@ -71,6 +71,7 @@ export class TeacherMessagesComponent implements OnInit {
  }
   selectCompetition(event:any){
     this.messageForm.reset();
+    this.selectedConverstions =null;
     if(event.selectedRows?.length>0) {
       this.selected = true;
       this.userToSend = event.selectedRows[0].dataItem;

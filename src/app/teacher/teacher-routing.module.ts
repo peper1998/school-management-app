@@ -8,6 +8,7 @@ import { TeacherAttendanceComponent } from './components/teacher-attendance/teac
 import { Resolver } from './components/teacher-schedule/resolver';
 import { TeacherMarksComponent } from './components/teacher-marks/teacher-marks/teacher-marks.component';
 import { TeacherMessagesComponent } from './components/teacher-messages/teacher-messages/teacher-messages.component';
+import { ClassAttendanceComponent } from './components/teacher-class-attendance/class-attendance/class-attendance.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
           { path: 'competitions', component: TeacherCompetitionsComponent },
           { path: 'attendance', component: TeacherAttendanceComponent },
           { path: 'marks', component: TeacherMarksComponent },
-          { path: 'messages', component: TeacherMessagesComponent }
+          { path: 'messages', component: TeacherMessagesComponent },
+          { path: 'class-attendance', component: ClassAttendanceComponent }
         ]
       }
     ]

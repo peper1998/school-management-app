@@ -115,12 +115,13 @@ export class TeacherCompetitionsComponent implements OnInit {
   }
   reflesh(){
     this.getAllCompetitions();
+    if(this.selectedCompetition){
     this.teacherCompetitionsService.getStudentsAssignedToCompetition(this.selectedCompetition.id).subscribe(res=> {
       this.studentsAssignedToCompetition = res;   
       this.studentsAssignedToCompetition.forEach(e=> { 
         e.displayName = e.studentFirstName + " " + e.studentLastName
            })         
-    }, error=>alert("Couldnt fetch student competition assignement"))
+    }, error=>alert("Couldnt fetch student competition assignement"))}
     console.log(this.selectedCompetition);
   }
   public cancelHandlerCompetition({ sender, rowIndex }) {
@@ -187,7 +188,7 @@ export class TeacherCompetitionsComponent implements OnInit {
     grid.closeRow(rowIndex);
     console.log(this.editedRowIndex);
     this.editedRowIndex = undefined;
-    this.formGroupAssignment = undefined;
+    //this.formGroupAssignment = undefined;
   }
 
   public cancelHandler({ sender, rowIndex }) {
