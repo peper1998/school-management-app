@@ -25,6 +25,10 @@ import { ClassInsertComponent } from './components/classes/class-insert/class-in
 import { SchedulesComponent } from './components/schedules/schedules.component';
 import { LessonsInsertComponent } from './components/schedules/lessons-insert/lessons-insert.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { ReportsComponent } from './components/reports/reports.component';
+import { ClassAttendanceReportComponent } from './components/reports/class-attendance-report/class-attendance-report.component';
+import { TeacherAttendanceComponent } from './components/reports/teacher-attendance/teacher-attendance.component';
+import { AverageGradesComponent } from './components/reports/average-grades/average-grades.component';
 
 
 
@@ -47,7 +51,7 @@ import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
     TeacherCourseAppointmentComponent,
     TeacherCourseLinkingsListComponent,
     SchedulesComponent, 
-    LessonsInsertComponent
+    LessonsInsertComponent, ReportsComponent, ClassAttendanceReportComponent, TeacherAttendanceComponent, AverageGradesComponent
   ],
   imports: [
     CommonModule,

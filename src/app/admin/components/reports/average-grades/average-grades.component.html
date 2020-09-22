@@ -1,0 +1,18 @@
+<kendo-dropdownlist *ngIf="dropdownItems" [data]="dropdownItems" (valueChange)="dropdownValueChanged($event)">
+</kendo-dropdownlist>
+
+
+<kendo-grid *ngIf="selectedClass" (cellClick)="studentSelected($event.dataItem)" [kendoGridBinding]="selectedClass.studentAverageGrades">
+  <kendo-grid-column field="firstName" title="Imie" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="lastName" title="Nazwisko" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="averageGradeTotal" title="Średnia ocen" width="100"></kendo-grid-column>
+</kendo-grid>
+<h1 *ngIf="selectedStudentGrades">{{selectedStudent.firstName}} {{selectedStudent.lastName}}</h1>
+<kendo-grid *ngIf="selectedStudentGrades"  [kendoGridBinding]="selectedStudentGrades">
+  <kendo-grid-column field="courseName" title="Przedmiot" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="averageGrade" title="Średnia ocen" width="100">
+  </kendo-grid-column>
+</kendo-grid>

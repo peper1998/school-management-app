@@ -1,0 +1,16 @@
+<app-bar>
+  <app-bar-header>Frekwencja w klasach</app-bar-header>
+  <app-bar-item>
+      <app-class-attendance-report [classes]="classesAttendanceReport"></app-class-attendance-report>
+  </app-bar-item>
+  <app-bar-header>Frekwencja nauczyciele</app-bar-header>
+  <app-bar-item>
+      <app-teacher-attendance [report]="teacherAttendanceReport"></app-teacher-attendance>
+  </app-bar-item>
+  <app-bar-header>Średnie ocen</app-bar-header>
+  <app-bar-item>
+      <app-average-grades></app-average-grades>
+  </app-bar-item>
+</app-bar>
+
+

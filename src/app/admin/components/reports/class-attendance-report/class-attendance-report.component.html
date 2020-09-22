@@ -1,0 +1,19 @@
+
+<kendo-grid *ngIf="classes" [kendoGridBinding]="classes" (cellClick)="classSelected($event)" [height]="480">
+  <kendo-grid-column field="className" title="Nazwa" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="hoursPerWeek" title="Godziny w tygodniu" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="totalHours" title="Suma godzin" width="100">
+  </kendo-grid-column>
+</kendo-grid>
+<h1 *ngIf="selectedClassName">{{selectedClassName}}</h1>
+
+<kendo-grid *ngIf="students" [kendoGridBinding]="students" (cellClick)="classSelected($event)" [height]="480">
+  <kendo-grid-column field="firstName" title="Imię" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="lastName" title="Nazwisko" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="attendedHours" title="Suma godzin" width="100">
+  </kendo-grid-column>
+</kendo-grid>
