@@ -38,10 +38,14 @@ export class ParentStudentInsertComponent implements OnInit {
     parentLastName: ['', [Validators.required, Validators.minLength(3)]],
     parentBirthDate: [new Date(), Validators.required],
     parentLogin: ['', Validators.required],
+    parentEmail: [''],
+    parentPhoneNumber: [''],
     studentFirstName: ['', [Validators.required, Validators.minLength(3)]],
     studentLastName: ['', [Validators.required, Validators.minLength(3)]],
     studentBirthDate: [new Date(), Validators.required],
     studentLogin: ['', Validators.required],
+    studentEmail: [''],
+    studentPhoneNumber: [''],
     classId: ['', Validators.required],
   });
 
@@ -69,10 +73,14 @@ export class ParentStudentInsertComponent implements OnInit {
     model.parent.birthDate = this.datePipe.transform(parentBirthDate, 'yyyy-MM-dd');
     model.parent.login = this.parentStudentForm.controls.parentLogin.value;
     model.parent.password = this.userCreationHelper.generatePassword();
+    model.parent.email=this.parentStudentForm.controls.parentEmail.value;
+    model.parent.phoneNumber=this.parentStudentForm.controls.parentPhoneNumber.value;
     model.student.birthDate = this.datePipe.transform(studentBirthDate, 'yyyy-MM-dd');
     model.student.firstName = this.parentStudentForm.controls.studentFirstName.value;
     model.student.lastName = this.parentStudentForm.controls.studentLastName.value;
     model.student.login = this.parentStudentForm.controls.studentLogin.value;
+    model.student.email = this.parentStudentForm.controls.studentEmail.value;
+    model.student.phoneNumber = this.parentStudentForm.controls.studentPhoneNumber.value;
     model.student.password = this.userCreationHelper.generatePassword();
     model.student.classId = this.parentStudentForm.controls.classId.value;
 

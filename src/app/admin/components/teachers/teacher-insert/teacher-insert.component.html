@@ -19,6 +19,14 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="lastName">Email</label>
+        <input type="text" formControlName="email" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Numer telefonu</label>
+        <input type="text" formControlName="phoneNumber" class="form-control"/>
+    </div>
+    <div class="form-group">
         <label for="lastName">Data urodzenia</label>
         <kendo-datepicker (valueChange)="birthDatePickerChangedHandler($event)">
         </kendo-datepicker>

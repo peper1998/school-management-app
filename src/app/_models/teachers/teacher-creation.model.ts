@@ -1,5 +1,4 @@
-import { User } from '../user';
-import { UserType } from 'src/app/_enums/UserType';
+import { UserType } from "src/app/_enums/UserType";
 
 
 
@@ -11,4 +10,6 @@ export class TeacherCreationModel{
     birthDate: string;
     userType: UserType;
     password: string;
+    email:string;
+    phoneNumber:string;
 }

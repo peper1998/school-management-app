@@ -1,5 +1,6 @@
-import { UserType } from 'src/app/_enums/UserType';
-import { ClassModel } from '../class/class.model';
+import { UserType } from "src/app/_enums/UserType";
+
+import { ClassModel } from "../class/class.model";
 
 export class StudentModel{
     id:number;
@@ -19,4 +20,6 @@ export class StudentCreationModel{
     login: string;
     birthDate: string;
     password: string;
+    email:string;
+    phoneNumber:string;
 }

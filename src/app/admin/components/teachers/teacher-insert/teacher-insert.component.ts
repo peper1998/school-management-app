@@ -20,6 +20,8 @@ export class TeacherInsertComponent implements OnInit {
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     birthDate: [new Date(), Validators.required],
     login: ['', Validators.required],
+    email: [''],
+    phoneNumber: [''],
   });
   password: string;
   login: string;
@@ -29,12 +31,14 @@ export class TeacherInsertComponent implements OnInit {
   }
 
   createModel(){
-    const date = new Date(this.teacherForm.controls['birthDate'].value);
+    const date = new Date(this.teacherForm.controls.birthDate.value);
     const teacherDTO = new TeacherCreationModel();
-    teacherDTO.firstName = this.teacherForm.controls['firstName'].value;
-    teacherDTO.lastName = this.teacherForm.controls['lastName'].value;
+    teacherDTO.firstName = this.teacherForm.controls.firstName.value;
+    teacherDTO.lastName = this.teacherForm.controls.lastName.value;
+    teacherDTO.email = this.teacherForm.controls.email.value;
+    teacherDTO.phoneNumber = this.teacherForm.controls.phoneNumber.value;
     teacherDTO.birthDate = this.datePipe.transform(date,'yyyy-MM-dd');
-    teacherDTO.login = this.teacherForm.controls['login'].value;
+    teacherDTO.login = this.teacherForm.controls.login.value;
     teacherDTO.password = this.userCreationHelper.generatePassword();
     this.login = teacherDTO.login;
     this.password = teacherDTO.password;
@@ -43,8 +47,8 @@ export class TeacherInsertComponent implements OnInit {
   }
 
   generateLogin(){
-    const login = this.userCreationHelper.generateLogin(this.teacherForm.controls['firstName'].value,this.teacherForm.controls['lastName'].value);
-    this.teacherForm.controls['login'].setValue(login);
+    const login = this.userCreationHelper.generateLogin(this.teacherForm.controls.firstName.value,this.teacherForm.controls.lastName.value);
+    this.teacherForm.controls.login.setValue(login);
   }
 
   addTeacher(){
@@ -57,7 +61,7 @@ export class TeacherInsertComponent implements OnInit {
 
   birthDatePickerChangedHandler(date: any)
   {
-    this.teacherForm.controls['birthDate'].setValue(date);
+    this.teacherForm.controls.birthDate.setValue(date);
   }
 
   constructor(private formBuilder: FormBuilder,

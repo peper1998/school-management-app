@@ -1,5 +1,4 @@
-import { User } from '../user';
-import { UserType } from 'src/app/_enums/UserType';
+import { User } from "../user";
 
 
 export class ParentModel extends User{
@@ -13,4 +12,6 @@ export class ParentCreationModel{
     login: string;
     birthDate: string;
     password: string;
+    email:string;
+    phoneNumber:string;
 }

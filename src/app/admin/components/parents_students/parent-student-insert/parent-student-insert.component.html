@@ -19,6 +19,14 @@
         </div>
     </div>
     <div class="form-group">
+        <label for="lastName">Email</label>
+        <input type="text" formControlName="parentEmail" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Numer telefonu</label>
+        <input type="text" formControlName="parentPhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
         <label for="lastName">Data urodzenia&nbsp;</label>
         <kendo-datepicker (valueChange)="parentBirthDatePickerChangedHandler($event)">
         </kendo-datepicker>
@@ -64,6 +72,14 @@
             <div *ngIf="f.studentLastName.errors.minLength">Nazwisko jest za krótkie</div>
         </div>
     </div>
+    <div class="form-group">
+      <label for="lastName">Email</label>
+      <input type="text" formControlName="studentEmail" class="form-control"/>
+  </div>
+  <div class="form-group">
+      <label for="lastName">Numer telefonu</label>
+      <input type="text" formControlName="studentPhoneNumber" class="form-control" />
+  </div>
     <div class="form-group">
         <label for="lastName">Data urodzenia&nbsp;</label>
         <kendo-datepicker (valueChange)="studentBirthDatePickerChangedHandler($event)">
