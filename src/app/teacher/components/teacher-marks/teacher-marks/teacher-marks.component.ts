@@ -118,7 +118,7 @@ export class TeacherMarksComponent implements OnInit {
   public editHandler({ sender, rowIndex, dataItem }) {
     this.closeEditor(sender);
     this.formGroup = new FormGroup({
-      'grade': new FormControl(dataItem.grade),
+      'grade': new FormControl(dataItem.grade, Validators.compose([Validators.required, Validators.pattern('[1-6]{1}')])),
       'description': new FormControl(dataItem.description, [Validators.required, Validators.minLength(3)]),
     });
 
@@ -151,12 +151,12 @@ export class TeacherMarksComponent implements OnInit {
       this.teacherMarksService.postNewMark(markPostDTO).subscribe(course => {
         console.log(course);
         this.dataStateChanged.emit();
-      });
+      },error=>{alert("Nie mozesz dodawac ocen do przedmiotu ktorego nie uczysz")});
     } else {
       this.teacherMarksService.editMark(markPostDTO, dataItem.id).subscribe(course => {
         this.dataStateChanged.emit();
         console.log(course);
-      });;
+      },error=>{alert("Nie mozesz edytowac ocen do przedmiotu ktorego nie uczysz")});;
     }
     this.reflesh();
     this.closeEditor(sender);
@@ -189,7 +189,7 @@ export class TeacherMarksComponent implements OnInit {
   public removeHandler({ dataItem, rowIndex }) {
     this.teacherMarksService.deleteMark(dataItem.id).subscribe(resp => {
       console.log(resp);
-    });
+    }, error => { alert("Nie mozesz usuwac ocen przedmiotu ktorego nie uczysz")});
     this.reflesh();
   }
 }
