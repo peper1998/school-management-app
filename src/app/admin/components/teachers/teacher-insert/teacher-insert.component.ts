@@ -55,6 +55,15 @@ export class TeacherInsertComponent implements OnInit {
 
     this.teachersService.addTeacher(this.createModel()).subscribe(teacher=>{
       this.pdfExport.saveAs(teacher.firstName+teacher.lastName + 'TempLoginData');
+      alert('Dodano nauczyciela!');
+      this.teacherForm = this.formBuilder.group({
+        firstName: ['', [Validators.required, Validators.minLength(3)]],
+        lastName: ['', [Validators.required, Validators.minLength(3)]],
+        birthDate: [new Date(), Validators.required],
+        login: ['', Validators.required],
+        email: [''],
+        phoneNumber: [''],
+      });
       console.log(teacher);
     });
   }
