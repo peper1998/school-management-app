@@ -1,11 +1,13 @@
-<div style="display:flex; flex-direction: row; width: fit-content;">
-  <h3>Wybierz klasę: </h3>
+<br>
+<div class="form-line">
+  <p>Wybierz klasę: </p>
   <kendo-dropdownlist name="classId" [data]="classesList" [textField]="'name'" [valueField]="'id'"
     (valueChange)="dropdownValueChanged($event)">
   </kendo-dropdownlist>
 </div>
-<div style="display:flex; flex-direction: row; width: fit-content;">
-  <h3>Wybierz przedmiot i nauczyciela: </h3>
+<br>
+<div class="form-line">
+  <p>Wybierz przedmiot i nauczyciela: </p>
   <kendo-dropdownlist class="teacher-course-dropdown" name="classId" [data]="teacherCoursesList"
     [textField]="'course.name'" [valueField]="'id'" (valueChange)="teacherCourseDropdownValueChanged($event)">
     <ng-template kendoDropDownListValueTemplate let-dataItem>
@@ -17,22 +19,26 @@
     </ng-template>
   </kendo-dropdownlist>
 </div>
-<div style="display:flex; flex-direction: row; width: fit-content;">
-  <h3>Wybierz numer lekcji: </h3>
+<br>
+<div class="form-line">
+  <p>Wybierz numer lekcji: </p>
   <kendo-dropdownlist [data]="lessonNumbers" (valueChange)="lessonNumberValueChanged($event)">
   </kendo-dropdownlist>
 </div>
-<div style="display:flex; flex-direction: row; width: fit-content;">
-  <h3>Wybierz dzień tygodnia: </h3>
+<br>
+<div class="form-line">
+  <p>Wybierz dzień tygodnia: </p>
   <kendo-dropdownlist [data]="weekDays" [textField]="'text'" [valueField]="'value'"
     (valueChange)="weekDayValueChanged($event)">
   </kendo-dropdownlist>
 </div>
-<div style="display:flex; flex-direction: row; width: fit-content;">
+<br>
+<div class="form-line">
   <button (click)="addLesson()" [disabled]="invalid()" class="btn btn-primary">
     Dodaj lekcję
   </button>
 </div>
+<br>
 <kendo-grid *ngIf="classLessonsInDay" [kendoGridBinding]="classLessonsInDay" kendoGridSelectBy="id" [pageSize]="20"
   [pageable]="true" [sortable]="true" [resizable]="true" [height]="480" (remove)="removeHandler($event)">
   <kendo-grid-column title="Numer lekcji" width="100">

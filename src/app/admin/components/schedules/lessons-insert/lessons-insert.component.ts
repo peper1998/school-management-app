@@ -67,6 +67,7 @@ export class LessonsInsertComponent {
         this.cdr.detectChanges();
       })
     }), error => {
+      console.log(error);
       this.lessonsService.getClassLessons(this.currentClassId).subscribe(response => {
         this.classLessons = null;
         this.classLessons = response;
@@ -88,6 +89,18 @@ export class LessonsInsertComponent {
         this.classLessons = resp;
         this.classLessonsInDay = this.classLessons.filter(lesson => lesson.dayOfWeek.toString() === this.currentDayOfWeek);
       })
+    },err=>{
+      const error = err.error as string;
+      if(error.includes('is already lesson at this time'))
+      {
+        alert('Lekcja w tym czasie już istnieje');
+      }else if(error.includes('is not available in given day and lesson'))
+      {
+        alert('Nauczyciel jest zajęty o tej porze');
+      }else{
+        alert('Nastąpił niespodziewany błąd');
+      }
+      console.log(err);
     });
   }
   invalid(){
