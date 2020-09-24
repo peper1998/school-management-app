@@ -1,4 +1,4 @@
-import { UserType } from 'src/app/_enums/UserType';
+import { UserType } from "src/app/_enums/UserType";
 
 export class TeacherGet {
     birthDate: string;
@@ -10,4 +10,6 @@ export class TeacherGet {
     userId: number
     userType: UserType;
     amountOfMessages:number;
+    email:string;
+    phoneNumber:string;
 }

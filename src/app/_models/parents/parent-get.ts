@@ -1,6 +1,6 @@
-import { UserType } from 'src/app/_enums/UserType';
+import { UserType } from "src/app/_enums/UserType";
 
-export class ParentGet {    
+export class ParentGet {
         birthDate: string;
         firstName: string;
         id: number;
@@ -10,4 +10,6 @@ export class ParentGet {
         userId: number
         userType: UserType;
         amountOfMessages:number;
+        email:string;
+        phoneNumber:string;
 }
