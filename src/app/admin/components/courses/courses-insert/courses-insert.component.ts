@@ -1,7 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CoursesService } from 'src/app/_services/courses/courses.service';
-import { FormBuilder, Validators } from '@angular/forms';
-import { CourseInsertModel } from 'src/app/_models/courses/course.model';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { FormBuilder, Validators } from "@angular/forms";
+import { CourseInsertModel } from "src/app/_models/courses/course.model";
+import { CoursesService } from "src/app/_services/courses/courses.service";
 
 @Component({
   selector: 'app-courses-insert',
@@ -19,8 +19,8 @@ export class CoursesInsertComponent implements OnInit {
 
   createModel()
   {
-    let model = new CourseInsertModel();
-    model.name = this.courseForm.controls["courseName"].value;
+    const model = new CourseInsertModel();
+    model.name = this.courseForm.controls.courseName.value;
     return model;
   }
   f()
@@ -31,9 +31,12 @@ export class CoursesInsertComponent implements OnInit {
   addCourse()
   {
     this.coursesService.addCourse(this.createModel()).subscribe(course=>{
-        console.log(course);
+        alert('Dodano przedmiot!');
         this.courseAdded.emit();
         this.courseForm.reset();
+    },
+    err=>{
+      alert('Nie udało się dodać przedmiotu!')
     });
   }
 
