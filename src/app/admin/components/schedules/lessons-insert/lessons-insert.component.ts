@@ -195,7 +195,7 @@ export class LessonsInsertComponent {
       case 4: {
         return 'THURSDAY';
       }
-      case 1: {
+      case 5: {
         return 'FRIDAY';
       }
       default: {

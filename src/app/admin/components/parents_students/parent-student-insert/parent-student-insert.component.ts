@@ -36,13 +36,13 @@ export class ParentStudentInsertComponent implements OnInit {
   public parentStudentForm = this.formBuilder.group({
     parentFirstName: ['', [Validators.required, Validators.minLength(3)]],
     parentLastName: ['', [Validators.required, Validators.minLength(3)]],
-    parentBirthDate: [new Date(), Validators.required],
+    parentBirthDate: ['', Validators.required],
     parentLogin: ['', Validators.required],
     parentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     parentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
     studentFirstName: ['', [Validators.required, Validators.minLength(3)]],
     studentLastName: ['', [Validators.required, Validators.minLength(3)]],
-    studentBirthDate: [new Date(), Validators.required],
+    studentBirthDate: ['', Validators.required],
     studentLogin: ['', Validators.required],
     studentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
     studentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
@@ -63,13 +63,13 @@ export class ParentStudentInsertComponent implements OnInit {
       this.parentStudentForm = this.formBuilder.group({
         parentFirstName: ['', [Validators.required, Validators.minLength(3)]],
         parentLastName: ['', [Validators.required, Validators.minLength(3)]],
-        parentBirthDate: [new Date(), Validators.required],
+        parentBirthDate: ['', Validators.required],
         parentLogin: ['', Validators.required],
         parentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         parentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
         studentFirstName: ['', [Validators.required, Validators.minLength(3)]],
         studentLastName: ['', [Validators.required, Validators.minLength(3)]],
-        studentBirthDate: [new Date(), Validators.required],
+        studentBirthDate: ['', Validators.required],
         studentLogin: ['', Validators.required],
         studentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
         studentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
@@ -102,12 +102,10 @@ export class ParentStudentInsertComponent implements OnInit {
     model.student.phoneNumber = this.parentStudentForm.controls.studentPhoneNumber.value;
     model.student.password = this.userCreationHelper.generatePassword();
     model.student.classId = this.parentStudentForm.controls.classId.value;
-
     this.parentLogin = model.parent.login;
     this.parentPassword = model.parent.password;
     this.studentLogin = model.student.login;
     this.studentPassword = model.student.password;
-
     return model;
   }
 

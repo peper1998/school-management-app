@@ -30,9 +30,10 @@
         [ngClass]="{ 'is-invalid': f.parentPhoneNumber.errors }"/>
   </div>
   <div class="form-group">
-    <label for="lastName">Data urodzenia&nbsp;</label>
-    <kendo-datepicker (valueChange)="parentBirthDatePickerChangedHandler($event)">
+    <label for="parentBirthDate">Data urodzenia&nbsp;</label>
+    <kendo-datepicker (valueChange)="parentBirthDatePickerChangedHandler($event)" formControlName="parentBirthDate">
     </kendo-datepicker>
+    <span *ngIf="f.parentBirthDate.errors" style="color:red"><br>Data urodzenia rodzica jest wymagana</span>
   </div>
   <div class="form-group">
     <label for="login">Login</label>
@@ -51,9 +52,10 @@
 <h3>Uczeń</h3>
 <div class="form-group">
   <label for="class">Klasa&nbsp;</label>
-  <kendo-dropdownlist name="classId" [data]="classList" [textField]="'name'" [valueField]="'id'"
+  <kendo-dropdownlist name="classId" [data]="classList" [textField]="'name'" [valueField]="'id'" formControlName="classId"
   (valueChange)="dropdownValueChanged($event)">
     </kendo-dropdownlist>
+    <span *ngIf="f.classId.errors" style="color:red"><br>Należy wybrać klasę ucznia</span>
   </div>
   <div class="form-group">
     <label for="firstName">Imię</label>
@@ -85,9 +87,10 @@
         [ngClass]="{ 'is-invalid': f.studentPhoneNumber.errors }"/>
   </div>
   <div class="form-group">
-    <label for="lastName">Data urodzenia&nbsp;</label>
-    <kendo-datepicker (valueChange)="studentBirthDatePickerChangedHandler($event)">
+    <label for="studentBirthDate">Data urodzenia ucznia&nbsp;</label>
+    <kendo-datepicker (valueChange)="studentBirthDatePickerChangedHandler($event)" formControlName="studentBirthDate">
     </kendo-datepicker>
+    <span *ngIf="f.studentBirthDate.errors" style="color:red"><br>Data urodzenia ucznia jest wymagana</span>
   </div>
   <div class="form-group">
     <label for="login">Login</label>

@@ -26,8 +26,8 @@ export class TeacherInsertComponent implements OnInit {
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     birthDate: [new Date(), Validators.required],
     login: ['', Validators.required],
-    email: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
-    phoneNumber: ['',Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')],
+    email: ['', [Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), Validators.required]],
+    phoneNumber: ['',[Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$'),Validators.required]],
   });
   password: string;
   login: string;
@@ -68,8 +68,8 @@ export class TeacherInsertComponent implements OnInit {
         lastName: ['', [Validators.required, Validators.minLength(3)]],
         birthDate: [new Date(), Validators.required],
         login: ['', Validators.required],
-        email: [''],
-        phoneNumber: [''],
+        email: ['', [Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), Validators.required]],
+        phoneNumber: ['',[Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$'),Validators.required]],
       });
       console.log(teacher);
     },
