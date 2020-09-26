@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CourseModel } from 'src/app/_models/courses/course.model';
-import { CoursesService } from 'src/app/_services/courses/courses.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { CourseModel } from "src/app/_models/courses/course.model";
+import { CoursesService } from "src/app/_services/courses/courses.service";
 
 @Component({
   selector: 'app-courses-list',
@@ -29,8 +29,8 @@ export class CoursesListComponent implements OnInit {
     this.editMode=true;
 
     this.formGroup = new FormGroup({
-      'id': new FormControl(dataItem.id),
-      'name': new FormControl(dataItem.name, [Validators.required, Validators.minLength(3)]),
+      id: new FormControl(dataItem.id),
+      name: new FormControl(dataItem.name, [Validators.required, Validators.minLength(3)]),
     });
 
     this.editedRowIndex = rowIndex;
@@ -47,8 +47,8 @@ export class CoursesListComponent implements OnInit {
     this.editMode=false;
 
     this.formGroup = new FormGroup({
-      'id': new FormControl(),
-      'name': new FormControl([Validators.required, Validators.minLength(3)]),
+      id: new FormControl(),
+      name: new FormControl([Validators.required, Validators.minLength(3)]),
     });
 
     sender.addRow(this.formGroup);
@@ -75,8 +75,11 @@ export class CoursesListComponent implements OnInit {
 
   public removeHandler({ dataItem }) {
     this.coursesService.deleteCourse(dataItem).subscribe(resp=>{
+      this.dataStateChanged.emit();
       console.log(resp);
-    });
+    },
+    err=>{
+      alert('Nie można usunąć przedmiotu')});
   }
 
   private closeEditor(grid, rowIndex = this.editedRowIndex) {
