@@ -6,6 +6,6 @@
 
     <app-bar-header>Dodaj nauczyciela</app-bar-header>
     <app-bar-item>
-        <app-teacher-insert></app-teacher-insert>
+        <app-teacher-insert (dataStateChanged)="loadData()"></app-teacher-insert>
     </app-bar-item>
 </app-bar>

@@ -2,17 +2,17 @@
     <app-bar-header>Lista przedmiotów</app-bar-header>
     <app-bar-item>
         <app-courses-list [coursesList]="coursesList"
-        (dataStateChanged)="loadCourses()"></app-courses-list>
+        (dataStateChanged)="loadData()"></app-courses-list>
     </app-bar-item>
 
     <app-bar-header>Dodaj przedmioty</app-bar-header>
     <app-bar-item>
-        <app-courses-insert (courseAdded)="loadCourses()"></app-courses-insert>
+        <app-courses-insert (courseAdded)="loadData()"></app-courses-insert>
     </app-bar-item>
 
     <app-bar-header>Przypisz nauczyciela do przedmiotu</app-bar-header>
     <app-bar-item>
-        <app-teacher-course-appointment [coursesList]="coursesList" [teachersList]="teachersList" ></app-teacher-course-appointment>
+        <app-teacher-course-appointment (dataStateChanged)="loadData()" [coursesList]="coursesList" [teachersList]="teachersList" ></app-teacher-course-appointment>
     </app-bar-item>
 
     <app-bar-header>Lista przypisań nauczycieli do przedmiotów</app-bar-header>

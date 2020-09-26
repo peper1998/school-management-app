@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CourseModel } from 'src/app/_models/courses/course.model';
-import { Teacher } from 'src/app/_models/teachers/teacher.model';
-import { CoursesService } from 'src/app/_services/courses/courses.service';
-import { TeacherCourseLinkPostModel } from 'src/app/_models/courses/teacher-course-link.model';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { CourseModel } from "src/app/_models/courses/course.model";
+import { TeacherCourseLinkPostModel } from "src/app/_models/courses/teacher-course-link.model";
+import { Teacher } from "src/app/_models/teachers/teacher.model";
+import { CoursesService } from "src/app/_services/courses/courses.service";
 
 @Component({
   selector: 'app-teacher-course-appointment',
@@ -13,7 +13,7 @@ export class TeacherCourseAppointmentComponent implements OnInit {
 
   @Input() coursesList: CourseModel[];
   @Input() teachersList: Teacher[];
-  
+  @Output() dataStateChanged = new EventEmitter<any>();
   selectedTeacher:Teacher;
   selectedCourseId:number;
 
@@ -32,12 +32,16 @@ export class TeacherCourseAppointmentComponent implements OnInit {
 
   linkTeacherWithCourse()
   {
-    let model = new TeacherCourseLinkPostModel();
+    const model = new TeacherCourseLinkPostModel();
     model.courseId=this.selectedCourseId;
     model.teacherId = this.selectedTeacher.id;
 
     this.coursesService.linkTeacherWithCourse(model).subscribe(resp=>{
-      console.log(resp);
+      alert('Przypisano przedmiot do nauczyciela');
+      this.dataStateChanged.emit();
+    },
+    err=>{
+      alert('Nie udało się przypisać przedmiotu do nauczyciela');
     })
   }
 

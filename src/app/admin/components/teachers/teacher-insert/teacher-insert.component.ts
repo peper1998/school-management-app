@@ -1,5 +1,5 @@
 import { DatePipe } from "@angular/common";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output, ViewChild } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { PDFExportComponent } from "@progress/kendo-angular-pdf-export";
 import { UserType } from "src/app/_enums/UserType";
@@ -15,13 +15,16 @@ import { TeachersService } from "src/app/_services/teachers/teachers.service";
 export class TeacherInsertComponent implements OnInit {
 
   @ViewChild('pdf', { static: true }) pdfExport: PDFExportComponent;
+
+  @Output() dataStateChanged = new EventEmitter<any>();
+
   public teacherForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
     birthDate: [new Date(), Validators.required],
     login: ['', Validators.required],
-    email: [''],
-    phoneNumber: [''],
+    email: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
+    phoneNumber: ['',Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')],
   });
   password: string;
   login: string;
@@ -56,6 +59,7 @@ export class TeacherInsertComponent implements OnInit {
     this.teachersService.addTeacher(this.createModel()).subscribe(teacher=>{
       this.pdfExport.saveAs(teacher.firstName+teacher.lastName + 'TempLoginData');
       alert('Dodano nauczyciela!');
+      this.dataStateChanged.emit();
       this.teacherForm = this.formBuilder.group({
         firstName: ['', [Validators.required, Validators.minLength(3)]],
         lastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -65,6 +69,9 @@ export class TeacherInsertComponent implements OnInit {
         phoneNumber: [''],
       });
       console.log(teacher);
+    },
+    err=>{
+      alert('Nie udało się dodać nauczyciela');
     });
   }
 
