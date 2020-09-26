@@ -10,3 +10,10 @@ export class User {
     userId: number;
     classId: number;
 }
+export class UserPutDTO {
+    birthDate: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+    phoneNumber: string;
+}

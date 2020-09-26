@@ -1,21 +1,18 @@
-<kendo-grid *ngIf="gridData" [kendoGridBinding]="gridData" kendoGridSelectBy="userId" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (save)="saveHandler($event)"
+<kendo-grid *ngIf="gridData" [kendoGridBinding]="gridData" kendoGridSelectBy="userId" (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (save)="saveHandler($event)" 
     [pageSize]="20" [pageable]="true" [sortable]="true" [resizable]="true" [height]="480">
     <kendo-grid-column field="firstName" title="Imię" width="100">
     </kendo-grid-column>
     <kendo-grid-column field="lastName" title="Nazwisko" width="100">
     </kendo-grid-column>
-    <kendo-grid-column field="birthDate" title="Data urodzenia" width="100">
+    <kendo-grid-column field="displayDate" title="Data urodzenia" width="100">
     </kendo-grid-column>
     <kendo-grid-column field="email" title="Email" width="150">
     </kendo-grid-column>
-    <kendo-grid-column field="phoneNumber" title="Telefon" width="100">
+    <kendo-grid-column field="phoneNumber" title="Telefon" width="120">
     </kendo-grid-column>
-    <kendo-grid-column title="Dziecko" width="150">
-        <ng-template field="student" kendoGridCellTemplate let-dataItem>
-          {{dataItem.studentFirstName}} {{dataItem.studentLastName}}
-        </ng-template>
-      </kendo-grid-column>
-      <kendo-grid-command-column title="command" width="100">
+    <kendo-grid-column field="className" title="Klasa" width="100">
+    </kendo-grid-column>
+    <kendo-grid-command-column title="command" width="220">
         <ng-template kendoGridCellTemplate let-isNew="isNew">
             <button kendoGridEditCommand [primary]="true">Edytuj</button>
             <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
