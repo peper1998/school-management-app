@@ -26,6 +26,9 @@ class parseData {
 <kendo-dropdownlist *ngIf='this.notASupervisor' name="courseId" [data]="attendanceClassGet" [textField]="'displayName'" [valueField]="'studentId'"
     (valueChange)="dropdownValueChanged($event)">
 </kendo-dropdownlist>
+<button (click)="editAttendance()" class="btn btn-primary" *ngIf='this.notASupervisor&&this.attendanceGet'>
+        Edytuj Obecności
+</button>
   <kendo-scheduler *ngIf='this.notASupervisor&&this.attendanceGet'
   [kendoSchedulerBinding]="events" 
                    [kendoSchedulerReactiveEditing]="createFormGroup" 
@@ -35,9 +38,11 @@ class parseData {
                    [group]="group"
                    style="height: 1000px;"
                    [editable]="false"
-                   >
+                   (eventClick)="onSlotDblClick($event)"
+>
+
           <kendo-scheduler-work-week-view showWorkHours="true"     slotDuration="60"   slotDivisions=4 startTime="08:00" 
-                   endTime="18:00">
+                   endTime="18:00" >
           </kendo-scheduler-work-week-view>
       </kendo-scheduler>
 
@@ -54,14 +59,43 @@ export class ClassAttendanceComponent implements OnInit {
   attendanceGet: AttendanceGet[];
   idTeacher: User;
   randomId:number = 1;
+  listOfAttendanceIds:number[] = [];
   constructor(private formBuilder: FormBuilder, private teacherServiceGet: TeacherScheduleServiceService, private route: ActivatedRoute) {
     this.createFormGroup = this.createFormGroup.bind(this);   
   }
   ngOnInit() {
     this.selectedDate = new Date();
     this.selectedDate.setDate(this.selectedDate.getDate()+1);
-    this.getCurrentUserId();  
-    //console.log(this.events);
+    this.getCurrentUserId();
+  }
+  onSlotDblClick(event:any) {
+    console.log(event.event.id);
+    this.attendanceGet.forEach(e=> {
+      if(e.id === event.event.id) {
+        e.wasPresent = !e.wasPresent;
+        if(this.listOfAttendanceIds.includes(e.id)) {
+          e.wasEdited=false;
+          this.listOfAttendanceIds = this.listOfAttendanceIds.filter(g=> g !== e.id) }
+        else { 
+          e.wasEdited=true;
+          this.listOfAttendanceIds.push(e.id);
+        }
+        this.pupulateSchedulerEvents();
+      }
+    })
+    console.log(this.listOfAttendanceIds);
+  }
+  editAttendance() {
+    this.listOfAttendanceIds.forEach(e=> {
+      this.teacherServiceGet.editAttendance(e).subscribe(res => {
+        this.attendanceGet.forEach(g=> {
+          if(g.id === e) g.wasEdited=false;
+        })
+        this.pupulateSchedulerEvents();
+      })
+    })
+    alert("Edytowano obecności");
+    this.listOfAttendanceIds = [];
   }
   dropdownValueChanged(event) {
     var tmp;
@@ -110,8 +144,9 @@ export class ClassAttendanceComponent implements OnInit {
       {
         var lul = new parseData();
         var tmp =  item.wasPresent === true ? "Obecny":"Nieobecny" ;
-        lul.title = item.courseName +" "+ tmp; 
-        lul.id = this.getNextId();
+        var edited = item.wasEdited === true ? "Edytowano": "";
+        lul.title = item.courseName +" "+ tmp + " "+ edited; 
+        lul.id = item.id;
         var tmp = this.convertFromDayOfWeekToDate()[item.dayOfWeek];
         var tmp1 = item.lessonNumber;
         lul.attendance = item.wasPresent? 'true':'false';
@@ -134,7 +169,6 @@ export class ClassAttendanceComponent implements OnInit {
             description: dataItem.description,
             roomId: setAndNumber[dataItem.attendance]
       }));
-      console.log(this.baseData);
   }
   randomInt = (min, max): number => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -216,7 +250,6 @@ export class ClassAttendanceComponent implements OnInit {
       // 'recurrenceRule': dataItem.recurrenceRule,
       // 'recurrenceId': dataItem.recurrenceId,
       'roomId': dataItem.roomId,
-      'attendees': [dataItem.attendees]
     }, {
       validator: this.startEndValidator
     });

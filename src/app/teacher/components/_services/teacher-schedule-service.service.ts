@@ -35,4 +35,8 @@ export class TeacherScheduleServiceService {
   getMyClassAttendance():Observable<AttendanceClassGet[]>{
     return this.http.get<AttendanceClassGet[]>('https://uni-school-system.herokuapp.com/api/classAttendance');
   }
+  editAttendance(id:number) {
+    var emptyJson = {};
+    return this.http.put<any>('https://uni-school-system.herokuapp.com/api/attendance/'+id,emptyJson);
+  }
 }

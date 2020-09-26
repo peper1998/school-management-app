@@ -28,7 +28,7 @@ export class TeacherAttendanceComponent implements OnInit {
       this.lessonAttendanceDTO= res;
       console.log(this.lessonAttendanceDTO);
     },  
-    error=>{ alert("Couldnt fetch attendance, maybe no lesson is currently ongoing?")});
+    error=>{ alert("Nie można pobrać obecności obecnej lekcji, prawdopodobnie obecnie nie toczy się żadna lekcja")});
   }
   saveChanges(item) {
     var index = this.lessonAttendanceDTO.students.indexOf(item);
