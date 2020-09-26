@@ -57,7 +57,7 @@ export class ClassInsertComponent implements OnInit {
       console.log(schoolClass);
     },
     err=>{
-      alert('Nie udło się dodać klasy!');
+      alert('Nie udało się dodać klasy!');
     });
   }
 
