@@ -6,7 +6,7 @@
 
     <app-bar-header>Dodaj klasę</app-bar-header>
     <app-bar-item>
-      <app-class-insert></app-class-insert>
+      <app-class-insert (dataStateChanged)="loadData()"></app-class-insert>
     </app-bar-item>
 
 </app-bar>

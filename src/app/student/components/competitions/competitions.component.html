@@ -1,7 +1,9 @@
 
 <kendo-grid *ngIf="competitions" [kendoGridBinding]="competitions">
-  <kendo-grid-column field="name" title="Nazwa" width="100">
+  <kendo-grid-column field="competitionName" title="Nazwa" width="100">
   </kendo-grid-column>
-  <kendo-grid-column field="description" title="Opis" width="100">
+  <kendo-grid-column field="descriptionCompetition" title="Opis konkursu" width="100">
+  </kendo-grid-column>
+  <kendo-grid-column field="descriptionParticipation" title="Wynik" width="100">
   </kendo-grid-column>
 </kendo-grid>

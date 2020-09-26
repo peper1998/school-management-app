@@ -18,6 +18,9 @@ export class TeacherInsertComponent implements OnInit {
 
   @Output() dataStateChanged = new EventEmitter<any>();
 
+  public min: Date = new Date(1990, 1, 1);
+  public max: Date = new Date(Date.now());
+
   public teacherForm = this.formBuilder.group({
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', [Validators.required, Validators.minLength(3)]],
