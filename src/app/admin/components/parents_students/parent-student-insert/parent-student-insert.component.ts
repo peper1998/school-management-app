@@ -38,14 +38,14 @@ export class ParentStudentInsertComponent implements OnInit {
     parentLastName: ['', [Validators.required, Validators.minLength(3)]],
     parentBirthDate: [new Date(), Validators.required],
     parentLogin: ['', Validators.required],
-    parentEmail: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
-    parentPhoneNumber: ['',Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')],
+    parentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+    parentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
     studentFirstName: ['', [Validators.required, Validators.minLength(3)]],
     studentLastName: ['', [Validators.required, Validators.minLength(3)]],
     studentBirthDate: [new Date(), Validators.required],
     studentLogin: ['', Validators.required],
-    studentEmail: ['', Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')],
-    studentPhoneNumber: ['',Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')],
+    studentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+    studentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
     classId: ['', Validators.required],
   });
 
@@ -59,6 +59,22 @@ export class ParentStudentInsertComponent implements OnInit {
 
   addParentAndStudent() {
     this.parentStudentService.addParentAndStudent(this.createModel()).subscribe(ps => {
+      alert('Dodano użytkowników');
+      this.parentStudentForm = this.formBuilder.group({
+        parentFirstName: ['', [Validators.required, Validators.minLength(3)]],
+        parentLastName: ['', [Validators.required, Validators.minLength(3)]],
+        parentBirthDate: [new Date(), Validators.required],
+        parentLogin: ['', Validators.required],
+        parentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        parentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
+        studentFirstName: ['', [Validators.required, Validators.minLength(3)]],
+        studentLastName: ['', [Validators.required, Validators.minLength(3)]],
+        studentBirthDate: [new Date(), Validators.required],
+        studentLogin: ['', Validators.required],
+        studentEmail: ['', [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+        studentPhoneNumber: ['',[Validators.required,Validators.pattern('^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$')]],
+        classId: ['', Validators.required],
+      });
       this.pdfExport.saveAs(ps.parent.firstName + ps.parent.lastName + '_' + ps.student.firstName + ps.student.firstName + 'TempLoginData');
       console.log(ps);
     },

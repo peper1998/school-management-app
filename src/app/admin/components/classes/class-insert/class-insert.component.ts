@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { EducationStage } from "src/app/_enums/EducationStageEnum";
 import { ClassCreationModel } from "src/app/_models/class/class-creation.model";
@@ -12,6 +12,8 @@ import { TeachersService } from "src/app/_services/teachers/teachers.service";
   styleUrls: ['./class-insert.component.scss']
 })
 export class ClassInsertComponent implements OnInit {
+
+  @Output() dataStateChanged = new EventEmitter<any>();
 
   get f() {
     return this.classForm.controls;
@@ -50,8 +52,12 @@ export class ClassInsertComponent implements OnInit {
   addClass() {
     this.classesService.addClass(this.createModel()).subscribe(schoolClass => {
       alert('Dodano klasę!');
+      this.dataStateChanged.emit();
       this.classForm.controls.name.setValue('');
       console.log(schoolClass);
+    },
+    err=>{
+      alert('Nie udło się dodać klasy!');
     });
   }
 

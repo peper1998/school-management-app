@@ -54,7 +54,7 @@ export class GradebookComponent implements OnInit {
       case 'FIVE': {
         return '5';
       }
-      case 'SIX ': {
+      case 'SIX': {
         return '6';
       }
       default:{
