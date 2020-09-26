@@ -79,7 +79,7 @@ export class CoursesListComponent implements OnInit {
       console.log(resp);
     },
     err=>{
-      alert('Nie można usunąć przedmiotu')});
+      alert('Nie można usunąć przedmiotu, może to byś spowodowane powiązaniem z nauczycielem')});
   }
 
   private closeEditor(grid, rowIndex = this.editedRowIndex) {
