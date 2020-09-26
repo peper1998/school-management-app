@@ -29,6 +29,9 @@ import { ReportsComponent } from './components/reports/reports.component';
 import { ClassAttendanceReportComponent } from './components/reports/class-attendance-report/class-attendance-report.component';
 import { TeacherAttendanceComponent } from './components/reports/teacher-attendance/teacher-attendance.component';
 import { AverageGradesComponent } from './components/reports/average-grades/average-grades.component';
+import { UsersComponent } from './components/users/users/users.component';
+import { StudentsListComponent } from './components/users/users/students-list/students-list.component';
+import { ParentsListComponent } from './components/users/users/parents-list/parents-list.component';
 
 
 
@@ -51,7 +54,8 @@ import { AverageGradesComponent } from './components/reports/average-grades/aver
     TeacherCourseAppointmentComponent,
     TeacherCourseLinkingsListComponent,
     SchedulesComponent, 
-    LessonsInsertComponent, ReportsComponent, ClassAttendanceReportComponent, TeacherAttendanceComponent, AverageGradesComponent
+    LessonsInsertComponent, ReportsComponent, ClassAttendanceReportComponent, 
+    TeacherAttendanceComponent, AverageGradesComponent, UsersComponent, StudentsListComponent, ParentsListComponent
   ],
   imports: [
     CommonModule,

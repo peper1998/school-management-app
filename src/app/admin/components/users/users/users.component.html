@@ -1,0 +1,15 @@
+<app-bar>
+    <app-bar-header>Lista Rodziców</app-bar-header>
+    <app-bar-item>
+        <app-parents-list [gridData]="this.parentsList"></app-parents-list>
+    </app-bar-item>
+    <app-bar-header>Lista Uczniów</app-bar-header>
+    <app-bar-item>
+        <app-students-list [gridData]="this.studentsList"></app-students-list>
+    </app-bar-item>
+    <app-bar-header>Lista Nauczycieli</app-bar-header>
+    <app-bar-item>
+        <app-teachers-list [gridData]="this.teachersList"></app-teachers-list>
+    </app-bar-item>
+
+</app-bar>

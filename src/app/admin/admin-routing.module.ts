@@ -8,6 +8,7 @@ import { ParentsStudentsComponent } from "./components/parents_students/parents-
 import { ReportsComponent } from "./components/reports/reports.component";
 import { SchedulesComponent } from "./components/schedules/schedules.component";
 import { TeachersComponent } from "./components/teachers/teachers.component";
+import { UsersComponent } from './components/users/users/users.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
           { path: 'schedules', component: SchedulesComponent },
           { path: 'classes', component: ClassesComponent},
           { path: 'reports', component: ReportsComponent},
+          { path: 'users', component: UsersComponent}
         ]
       }
     ]
